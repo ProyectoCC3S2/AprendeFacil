@@ -7,6 +7,8 @@ import {
   Route,
 } from "react-router-dom";
 import QuestionList from "./components/QuestionList";
+import RegistrationForm from "./components/RegistrationForm";
+import NormalLoginForm from "./components/NormalLoginForm";
 
 const questions = [
   {
@@ -40,9 +42,18 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/pregunta/:id">
+          <Route path="/Pregunta/:id">
             <CustomLayout questions={questions} />
           </Route>
+
+          <Route path="/IniciarSesion">
+            <NormalLoginForm />
+          </Route>
+
+          <Route path="/Registrarse">
+            <RegistrationForm />
+          </Route>
+
           <Route path="/">
             <QuestionList questions={questions} />
           </Route>
