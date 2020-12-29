@@ -17,13 +17,32 @@ function Wrapper(props) {
         </Link>
       </Header>
       <div>
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-    <Menu.Item key="1">Iniciar Sesión</Menu.Item>
-    <Menu.Item key="2">Registrarse</Menu.Item>
-    <Menu.Item key="3">Recargar Dinero</Menu.Item>
-    <Menu.Item key="4">Convertir Monedas</Menu.Item>
-    <Menu.Item key="5">Ver Perfil</Menu.Item>
-  </Menu></div>
+    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
+      <Menu.Item key="1">
+        <Link to={"/"}>
+        HOME
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Link to={"/IniciarSesion"}>
+        Iniciar Sesión
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="3">
+      <Link to={"/Registrarse"}>
+        Registrarse
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="4">
+        Recargar Dinero
+      </Menu.Item>
+      <Menu.Item key="5">
+        Convertir Monedas
+      </Menu.Item>
+      <Menu.Item key="6">
+        Ver Perfil
+      </Menu.Item>
+    </Menu></div>
       <Content style={{ padding: '0 50px', marginTop: '50px' }}>
         <div className="site-layout-content">
           {props.children}
