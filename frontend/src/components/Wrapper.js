@@ -34,12 +34,17 @@ function Wrapper(props) {
         </Link>
       </Menu.Item>
       <Menu.Item key="4">
-        Recargar Dinero
+      <Link to={"/CrearPublicacion"}>
+        Crear Publicación
+      </Link>
       </Menu.Item>
       <Menu.Item key="5">
-        Convertir Monedas
+        Recargar Dinero
       </Menu.Item>
       <Menu.Item key="6">
+        Convertir Monedas
+      </Menu.Item>
+      <Menu.Item key="7">
         Ver Perfil
       </Menu.Item>
     </Menu></div>

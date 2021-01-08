@@ -9,6 +9,8 @@ import {
 import QuestionList from "./components/QuestionList";
 import RegistrationForm from "./components/RegistrationForm";
 import NormalLoginForm from "./components/NormalLoginForm";
+import CreatePost from "./components/CreatePost";
+import Prueba from './components/Prueba';
 
 const questions = [
   {
@@ -37,7 +39,10 @@ const questions = [
   }
 ]
 
-function App() {
+const Routes = () => {
+
+
+
   return (
     <div className="App">
       <Router>
@@ -45,17 +50,20 @@ function App() {
           <Route path="/Pregunta/:id">
             <CustomLayout questions={questions} />
           </Route>
-
           <Route path="/IniciarSesion">
             <NormalLoginForm />
           </Route>
-
           <Route path="/Registrarse">
             <RegistrationForm />
           </Route>
-
+          <Route path="/CrearPublicacion">
+            <CreatePost />
+          </Route>
           <Route path="/">
-            <QuestionList questions={questions} />
+            <Prueba />
+          </Route>
+          <Route path="/Home">
+            <QuestionList questions = {questions} />
           </Route>
         </Switch>
       </Router>
@@ -63,4 +71,4 @@ function App() {
   );
 }
 
-export default App;
+export default Routes;
