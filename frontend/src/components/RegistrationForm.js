@@ -9,6 +9,8 @@ import {
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import Wrapper from "./Wrapper";
+import Axios from 'axios';
+
 
 const { Option } = Select;
 
@@ -46,8 +48,16 @@ const tailFormItemLayout = {
 const RegistrationForm = () => {
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const [email, setemail] = React.useState('');
+  const [nickname, setnickname] = React.useState('');
+  const [password, setpassword] = React.useState('');
+  const [phone, setphone] = React.useState('');
+
+  const registrar = async() => {
+    const NuevoUsuario = {email, nickname, password, phone}
+    const respuesta = await Axios.post('http://localhost:4000/api', NuevoUsuario)
+    console.log(respuesta)
+    console.log(NuevoUsuario)
   };
 
   const prefixSelector = (
@@ -57,7 +67,7 @@ const RegistrationForm = () => {
           width: 70,
         }}
       >
-        <Option value="86">+51</Option>
+        <Option value="51">+51</Option>
       </Select>
     </Form.Item>
   );
@@ -67,15 +77,12 @@ const RegistrationForm = () => {
       <div>
           <h2>Registrarse</h2>
       </div>  
+
       <Form
         {...formItemLayout}
         form={form}
         name="register"
-        onFinish={onFinish}
-        initialValues={{
-          residence: ['zhejiang', 'hangzhou', 'xihu'],
-          prefix: '86',
-        }}
+        onFinish = {registrar}
         scrollToFirstError
       >
         <Form.Item
@@ -91,6 +98,7 @@ const RegistrationForm = () => {
               message: 'Please input your E-mail!',
             },
           ]}
+          onChange = {e=>setemail(e.target.value)}
         >
           <Input />
         </Form.Item>
@@ -105,6 +113,7 @@ const RegistrationForm = () => {
             },
           ]}
           hasFeedback
+          onChange = {e=>setpassword(e.target.value)}
         >
           <Input.Password />
         </Form.Item>
@@ -150,6 +159,7 @@ const RegistrationForm = () => {
               whitespace: true,
             },
           ]}
+          onChange = {e=>setnickname(e.target.value)}
         >
           <Input />
         </Form.Item>
@@ -163,6 +173,7 @@ const RegistrationForm = () => {
               message: 'Please input your phone number!',
             },
           ]}
+          onChange = {e=>setphone(e.target.value)}
         >
           <Input
             addonBefore={prefixSelector}

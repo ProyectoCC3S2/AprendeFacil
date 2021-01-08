@@ -1,4 +1,4 @@
-  body {
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -19,7 +19,6 @@ code {
 .site-layout-content {
   min-height: 280px;
   padding: 24px;
-  font-size: 20px;
   background: #fff;
 }
 #components-layout-demo-top .logo {
@@ -43,13 +42,11 @@ code {
 
 .header__title {
   text-align: left;
-  
-  font-size: 50px;
+  font-size: 1.5rem;
 }
 
 .header__data {
   display: flex;
-
 }
 
 .header_data--item {
@@ -95,7 +92,6 @@ code {
 .comment__response {
   display: flex;
   justify-content: flex-end;
-  
 }
 
 .comment__user {
@@ -103,7 +99,6 @@ code {
   padding: 0.5rem;
   display: flex;
   border-radius: 4px;
-  
 }
 
 .comment__user--photo img {
@@ -137,12 +132,10 @@ code {
   flex-direction: column;
   align-items: flex-end;
   padding: 2rem;
-  font-size: 30px;
 }
 
 .answer-box button {
   margin-top: 1rem;
-  font-size: 20px;
 }
 
 .answer-container {
@@ -160,9 +153,8 @@ code {
   display: flex;
   margin-bottom: 2rem;
   padding: 2rem;
-  font-size: 20px;
   background: #8d8d8d;
-  border-radius: 40px;
+  border-radius: 4px;
 }
 
 .question__vote {
@@ -177,7 +169,6 @@ code {
   margin-left: 1rem;
   color: white;
   width: 100%;
-  
 }
 
 .question__info--data {

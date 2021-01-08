@@ -2,12 +2,12 @@ import * as React from "react";
 import Wrapper from "./Wrapper";
 import {Link} from "react-router-dom";
 
-function QuestionList(props) {
+function QuestionList({ questions }) {
   return (
     <Wrapper>
       <h1>Lista de todas las preguntas en el Foro</h1>
       {
-        props.questions.map(question => (
+        questions.map(question => (
           <Link to={`/pregunta/${question.id}`}>
             <div className="question">
               <div className="question__vote">
