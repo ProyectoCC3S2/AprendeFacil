@@ -20,7 +20,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 8,
+      span: 5,
     },
   },
   wrapperCol: {
@@ -28,7 +28,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 16,
+      span: 15,
     },
   },
 };
@@ -40,7 +40,7 @@ const tailFormItemLayout = {
     },
     sm: {
       span: 16,
-      offset: 8,
+      offset: 4,
     },
   },
 };
@@ -84,6 +84,7 @@ const RegistrationForm = () => {
         name="register"
         onFinish = {registrar}
         scrollToFirstError
+        className="register-form"
       >
         <Form.Item
           name="email"

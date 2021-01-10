@@ -6,21 +6,51 @@ import axios from 'axios';
 
 class Prueba extends React.Component {
   state = {
-    publicaciones: []
+    publicaciones: [],
+    publicacionesBackup: [],
+    textBuscar: ""
   }
 
   componentDidMount() {
     axios.get(`http://localhost:4000/api/publicacion/publicaciones`)
       .then(res => {
-        const publicaciones = res.data.data;
-        this.setState({ publicaciones });
+        this.setState({ 
+          publicaciones: res.data,
+          publicacionesBackup: res.data        
+        })
       })
   }
+
+  filter(event){
+    console.log(event.target.value)
+    // Obtener datos de buscar
+    var text = event.target.value
+    // Obtener datos de array
+    const data = this.state.publicacionesBackup
+
+    const newData = data.filter(function(item){
+        console.log(item.titulo)
+        // Variable de titulo
+        const itemData = item.titulo.toUpperCase() // titulo se refiere al titulo de la publicación en la base de datos
+        // Variable de buscar
+        const textData = text.toUpperCase()
+        // Filtrado para ver si es verdadero o no, luego de retorna
+        return itemData.indexOf(textData) > -1
+    })
+    
+    this.setState({
+        publicaciones: newData,
+        textBuscar: text,
+    })
+
+    // Sacado de: https://www.tutofox.com/react/react-js-buscador-de-un-objeto-o-un-array/
+ }
 
   render(){
     return(
       <Wrapper>
         <h1>Lista de todas las preguntas en el Foro</h1>
+        Buscador: <input className="create-form-input__search" placeholder="Ingresar titulo o plabra clave..."  value={this.state.text} onChange={(text) => this.filter(text)}/>
         <div className = "container">
         <div className = "row">
               <div className = "container">

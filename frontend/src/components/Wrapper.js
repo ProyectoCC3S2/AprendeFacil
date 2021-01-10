@@ -5,10 +5,7 @@ const { Header, Content, Footer } = Layout;
 
 function Wrapper(props) {
   return (
-    
-
     <Layout className="custom-layout">
-      
       <Header>
         <Link to={"/"}>
           <h1 className="title">
@@ -16,8 +13,8 @@ function Wrapper(props) {
           </h1>
         </Link>
       </Header>
-      <div>
-    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
+    <div>
+    <Menu theme="dark" mode="horizontal" className="split-menu">
       <Menu.Item key="1">
         <Link to={"/"}>
         HOME
@@ -47,13 +44,14 @@ function Wrapper(props) {
       <Menu.Item key="7">
         Ver Perfil
       </Menu.Item>
-    </Menu></div>
+    </Menu>
+    </div>
       <Content style={{ padding: '0 50px', marginTop: '50px' }}>
         <div className="site-layout-content">
           {props.children}
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Desarrollado por: Cesar, Rosa, Danilo, Gabriel.</Footer>
+      <Footer style={{ textAlign: 'center' }}>Desarrollado por: Cesar, Rosa, Danilo y Gabriel.</Footer>
     </Layout>
   )
 }
