@@ -1,24 +1,20 @@
-import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Checkbox, Select } from 'antd';
 import Wrapper from "./Wrapper";
 import TextArea from 'antd/lib/input/TextArea';
-import axios from 'axios';
+
 
 const CreatePost = () => {
-
-
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-
-    const publicacion = { values };
-    axios.post('http://localhost:4000/api/publicacion/createpublicacion', publicacion)
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-    })
-
   };
-  
+
+  const { Option } = Select;
+  const cursos = ['Lenguaje','Literatura','Historia','Geografía','Psicología','Filosofía','Aritmetica','Álgebra','Trigonometría','Geometría','Química','Física','Biología','Anatomía','Ingles'];
+  const tags =[]
+  for (let i = 0; i < cursos.length; i++) {
+    tags.push(<Option key={i}>{cursos[i]}</Option>);
+  }
+
   return (     
     <Wrapper>
       <div>
@@ -33,21 +29,21 @@ const CreatePost = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          name="title"
+          name="Tittle"
           className="create-form-input"
           rules={[
             {
               required: true,
-              message: 'Please input your title!',
+              message: 'Please input your Tittle!',
             },
           ]}
         >
         <Input 
         maxLength="80"
-        placeholder="title" />
+        placeholder="Tittle" />
         </Form.Item>
         <Form.Item
-          name="comment"
+          name="Description"
           className="create-form-input"
           rules={[
             {
@@ -63,7 +59,19 @@ const CreatePost = () => {
           maxLength="1500"
           />
         </Form.Item>
-
+        <div className="tags">
+        <p>Tags: </p>
+        <Form.Item className="tags__select">
+        <Select
+          mode="multiple"
+          allowClear
+          placeholder="Select your tags"
+          maxTagCount={3}
+        >
+          {tags}
+        </Select>
+        </Form.Item>
+        </div>
         <Form.Item>
           <Button type="primary" htmlType="submit" className="create-form-button">
             Publicar
