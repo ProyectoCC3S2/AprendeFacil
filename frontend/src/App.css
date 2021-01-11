@@ -89,3 +89,64 @@
 .tags__select{
   width: 40%;
 }
+
+.profile{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.profile__avatar{
+  display: flex;
+  flex-direction: column;
+  margin: 2em 1em 2em 1em;
+  padding: 2em 2em 2em 2em;
+  width: 30%;
+  height: 25em;
+  background-color: aliceblue;
+  align-content: center;
+  justify-content: space-around;
+}
+.profile__info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 2em 1em 2em 1em;
+  width: 56%;
+  height: 28em;
+  color: darkblue;
+  font-size: 18px;
+}
+
+.profile__info--tittle{
+  font-size: 28px;
+  font-weight: bold;
+  padding: 5px 0px 5px 0px;
+  align-self: center;
+}
+
+.profile__info--item{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 5px 0px 5px 0px;
+  flex-wrap: wrap;
+}
+
+.profile__info--item--label{
+  display: flex;
+  justify-content: left;
+  width: 20%;
+}
+
+.profile__info--item--data{
+  display: flex;
+  justify-content: left;
+  width: 80%;
+}
+
+.profile__info--button{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}

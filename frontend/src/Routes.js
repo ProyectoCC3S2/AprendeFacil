@@ -11,6 +11,7 @@ import RegistrationForm from "./components/RegistrationForm";
 import NormalLoginForm from "./components/NormalLoginForm";
 import CreatePost from "./components/CreatePost";
 import Prueba from './components/Prueba';
+import Profile from './components/Profile'
 
 const questions = [
   {
@@ -58,6 +59,9 @@ const Routes = () => {
           </Route>
           <Route path="/CrearPublicacion">
             <CreatePost />
+          </Route>
+          <Route path="/VerPerfil">
+            <Profile/>
           </Route>
           <Route path="/">
             <Prueba />
