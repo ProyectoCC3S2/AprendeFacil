@@ -8,32 +8,31 @@ class Prueba extends React.Component {
   state = {
     publicaciones: [],
     publicacionesBackup: [],
-    textBuscar: ""
+    textBuscar: ''
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:4000/api/publicacion/publicaciones`)
+    axios.get('http://localhost:4000/api/publicacion/publicaciones')
       .then(res => {
         this.setState({ 
-          publicaciones: res.data,
+          publicaciones: res.data.data,
           publicacionesBackup: res.data        
         })
       })
   }
 
-  filter(event){
+  filtro(event){
     console.log(event.target.value)
     // Obtener datos de buscar
-    var text = event.target.value
+    let text = event.target.value
     // Obtener datos de array
-    const data = this.state.publicacionesBackup
+    let data = [] = this.state.publicacionesBackup.data
 
-    const newData = data.filter(function(item){
-        console.log(item.titulo)
+    let newData = data.filter(function(item){
         // Variable de titulo
-        const itemData = item.titulo.toUpperCase() // titulo se refiere al titulo de la publicación en la base de datos
+        let itemData = item.title.toUpperCase() // titulo se refiere al titulo de la publicación en la base de datos
         // Variable de buscar
-        const textData = text.toUpperCase()
+        let textData = text.toUpperCase()
         // Filtrado para ver si es verdadero o no, luego de retorna
         return itemData.indexOf(textData) > -1
     })
@@ -50,7 +49,10 @@ class Prueba extends React.Component {
     return(
       <Wrapper>
         <h1>Lista de todas las preguntas en el Foro</h1>
-        Buscador: <input className="create-form-input__search" placeholder="Ingresar titulo o plabra clave..."  value={this.state.text} onChange={(text) => this.filter(text)}/>
+        Buscador:
+        <input className="create-form-input__search" placeholder="Ingresar titulo o plabra clave..."  value={this.state.text} onChange={(text) => this.filtro(text)}/>
+        <br></br>
+        <br></br>
         <div className = "container">
         <div className = "row">
               <div className = "container">
@@ -58,11 +60,13 @@ class Prueba extends React.Component {
                 {this.state.publicaciones.map( publicacion => (
                   <Link to={`/pregunta/${publicacion._id}`}>
                     <div className="question">
+
                       <div className="question__vote">
                         {publicacion.votes}
                       </div>
                       <div className="question__info">
                         <div className="question__info--comment">
+                        <div className="question__info--title">{publicacion.title}</div>
                           {publicacion.comment}
                         </div>
                         <div className="question__info--data">
