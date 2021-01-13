@@ -16,7 +16,6 @@ app.use(morgan('dev'));
 
 app.use(bodyparser.json());
 app.use(cors())
- 
 //database setup
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser:true,

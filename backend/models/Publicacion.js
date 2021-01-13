@@ -53,7 +53,7 @@ const publicacionSchema = new mongoose.Schema(
                 required: false
             },
         type: JSON,
-        required: false,    
+        required: false,
         },
     },
         {timestamps: true},
