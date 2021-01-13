@@ -159,7 +159,7 @@ code {
 
 .question__vote {
   font-size: 1.5rem;
-  color: white;
+  color: wheat; 
 }
 
 .question__info {
@@ -183,4 +183,9 @@ code {
   margin: 0.2rem;
   border-radius: 4px;
   color: black;
+}
+
+.question__info--comment{
+    font-size: 18px;
+    color: white;
 }

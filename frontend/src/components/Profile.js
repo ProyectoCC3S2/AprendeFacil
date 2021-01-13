@@ -1,4 +1,4 @@
-import { Form, Input, Button, Image } from 'antd';
+import { Form, Input, Button, Image, Empty } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Wrapper from "./Wrapper";
 
@@ -11,12 +11,13 @@ const Profile = () => {
                 {/* Se usa para ver la foto de perfil*/}
                 <div className="profile__avatar" >
                     <div>
-                        <Image width="80%" src="https://scontent.flim2-2.fna.fbcdn.net/v/t31.0-8/10865941_840129099386712_2631633907601281414_o.jpg?_nc_cat=103&ccb=2&_nc_sid=174925&_nc_ohc=gLUn93TbbRgAX8ZV-5R&_nc_ht=scontent.flim2-2.fna&oh=3e72875b222ddf553f93d2b4964783f0&oe=60220E11"
+                        <Image width="80%" src="https://scontent-lim1-1.xx.fbcdn.net/v/t1.0-9/294585_158789240882503_1526909984_n.jpg?_nc_cat=102&ccb=2&_nc_sid=174925&_nc_eui2=AeHtowMxiPCtjqJHRXMTIuQnprmID2KUmVqmuYgPYpSZWnn0OCBCwVqW-oXrnj13j0nWJCRjilV95-l0x2XJ400a&_nc_ohc=3aCxculePlQAX9EXaSh&_nc_ht=scontent-lim1-1.xx&oh=8ad089b74842a01a0e2e6d62e012a4cf&oe=60201D5A"
+                            
                             alt="foto-perfil">
                         </Image>
                     </div>
                     <div>
-                        <Button type="primary" style={{margin:"5px 0px 5px 0px"}} size="small">
+                        <Button type="primary" style={{margin:"3px 0px 3px 0px"}} size="small">
                             Cambiar Foto
                         </Button>
                     </div>
@@ -29,7 +30,7 @@ const Profile = () => {
                             Nombres:
                         </div>
                         <div className="profile__info--item--data">
-                            Nombre1 Nombre2
+                            Cesar 
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -37,7 +38,7 @@ const Profile = () => {
                             Apellidos:
                         </div>
                         <div className="profile__info--item--data">
-                            Apellido1 Apellido2
+                            Colorado 
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -53,7 +54,7 @@ const Profile = () => {
                             Correo:
                         </div>
                         <div className="profile__info--item--data">
-                            prototipo@uni.pe
+                            ccoloradoc@uni.pe
                         </div>   
                     </div>
                     <div className="profile__info--item">
