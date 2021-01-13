@@ -1,7 +1,9 @@
-import {Layout, Menu} from 'antd';
+import {Layout, Menu } from 'antd';
+import { MailOutlined, UserOutlined, CloseOutlined } from '@ant-design/icons';
 import * as React from "react";
 import {Link} from "react-router-dom";
 const { Header, Content, Footer } = Layout;
+const SubMenu = Menu.SubMenu;
 
 function Wrapper(props) {
   return (
@@ -41,9 +43,23 @@ function Wrapper(props) {
       <Menu.Item key="6">
         Convertir Monedas
       </Menu.Item>
-      <Menu.Item key="7">
-        Ver Perfil
-      </Menu.Item>
+      <SubMenu title={<span> Usuario</span>}>
+        <Menu.Item key="7">
+          <Link to={"/VerPerfil"}>
+          <UserOutlined /> Perfil
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="8">
+          <Link to={"/"}>
+          <MailOutlined /> Mensajes
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="9">
+          <Link to={"/"}>
+          <CloseOutlined /> Salir
+          </Link>
+        </Menu.Item>
+      </SubMenu>
     </Menu>
     </div>
       <Content style={{ padding: '0 50px', marginTop: '50px' }}>

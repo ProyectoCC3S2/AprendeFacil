@@ -1,18 +1,31 @@
 import { Form, Input, Button, Checkbox, Select } from 'antd';
 import Wrapper from "./Wrapper";
 import TextArea from 'antd/lib/input/TextArea';
-
+import apiCore from './apiCore';
+import postPublicacion from './apiCore';
 
 const CreatePost = () => {
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    return fetch(
+      `http://localhost:4000/api/publicacion/createpublicacion`,
+      {
+          crossDomain:true,
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(values),
+      })
+    .then(response => {
+      console.log(response)
+      return response.json()
+  })
+  .catch(err => console.log(err));
   };
 
   const { Option } = Select;
   const cursos = ['Lenguaje','Literatura','Historia','Geografía','Psicología','Filosofía','Aritmetica','Álgebra','Trigonometría','Geometría','Química','Física','Biología','Anatomía','Ingles'];
   const tags =[]
   for (let i = 0; i < cursos.length; i++) {
-    tags.push(<Option key={i}>{cursos[i]}</Option>);
+    tags.push(<Option key={cursos[i]}>{cursos[i]}</Option>);
   }
 
   return (     
@@ -20,7 +33,7 @@ const CreatePost = () => {
       <div>
           <h2>Crear Publicación</h2>
       </div>  
-      <Form
+      <Form 
         name="create_login"
         className="create-form"
         initialValues={{
@@ -29,7 +42,7 @@ const CreatePost = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          name="Tittle"
+          name="title"
           className="create-form-input"
           rules={[
             {
@@ -40,10 +53,10 @@ const CreatePost = () => {
         >
         <Input 
         maxLength="80"
-        placeholder="Tittle" />
+        placeholder="title" />
         </Form.Item>
         <Form.Item
-          name="Description"
+          name="comment"
           className="create-form-input"
           rules={[
             {
@@ -61,7 +74,7 @@ const CreatePost = () => {
         </Form.Item>
         <div className="tags">
         <p>Tags: </p>
-        <Form.Item className="tags__select">
+        <Form.Item name="tags" className="tags__select">
         <Select
           mode="multiple"
           allowClear
@@ -73,9 +86,11 @@ const CreatePost = () => {
         </Form.Item>
         </div>
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="create-form-button">
+          <apiCore>
+          <Button  type="primary" htmlType="submit" className="create-form-button">
             Publicar
           </Button>
+          </apiCore>
         </Form.Item>
       </Form>
     </Wrapper> 

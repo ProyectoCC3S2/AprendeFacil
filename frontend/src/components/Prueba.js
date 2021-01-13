@@ -21,6 +21,16 @@ class Prueba extends React.Component {
       })
   }
 
+ /*  Guarda() {
+    axios.post('https://cors-anywhere.herokuapp.com/http://localhost:4000/api/publicacion/createpublicacion')
+      .then(res => {
+        this.setState({ 
+          publicaciones: res.data.data,
+          publicacionesBackup: res.data        
+        })
+      })
+  } */
+
   filtro(event){
     console.log(event.target.value)
     // Obtener datos de buscar
@@ -78,7 +88,7 @@ class Prueba extends React.Component {
                             }
                           </div>
                           <div className="question__info--user">
-                            {publicacion.userData.name}
+                            {publicacion.userData? publicacion.userData.name:""}
                           </div>
                         </div>
                       </div>
@@ -135,6 +145,5 @@ export default Prueba
     "createdAt":"",
     "updatedAt": "",
     "__v":0}, {}]);
-
   const [error, setError] = useState(false);
 */

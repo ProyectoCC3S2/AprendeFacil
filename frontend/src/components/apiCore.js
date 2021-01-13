@@ -14,3 +14,7 @@ export const getPublicacion = () => {
     .catch(err => console.log(err));
 }
 
+
+export default function postPublicacion(object){
+    
+}
