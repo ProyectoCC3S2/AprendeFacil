@@ -78,6 +78,13 @@
   
 }
 
+.coins{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  column-gap: 10px;
+}
+
 .tags{
   width: 80%;
   display: flex;
@@ -150,3 +157,20 @@
   flex-direction: column;
   align-self: center;
 }
+
+.post__done{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+  font-size: 44px;
+  color: #61dafb;
+}
+
+.post__done--sentence{
+  width: 50%;
+  height: 35%;
+  margin: 0px 0px 0px 0px;
+}
+
