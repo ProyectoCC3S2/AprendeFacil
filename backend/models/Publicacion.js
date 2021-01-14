@@ -23,7 +23,7 @@ const publicacionSchema = new mongoose.Schema(
 }
 */
     {        
-        votes: {
+        coins: {
         type: Number,
         required: false
         },
