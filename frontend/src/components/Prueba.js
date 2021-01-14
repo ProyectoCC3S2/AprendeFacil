@@ -2,6 +2,7 @@ import Wrapper from './Wrapper';
 import React, {useEffect, useState} from 'react';
 import { getPublicacion } from "./apiCore"
 import {Link} from "react-router-dom";
+import { SketchOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
 class Prueba extends React.Component {
@@ -72,7 +73,7 @@ class Prueba extends React.Component {
                     <div className="question">
 
                       <div className="question__vote">
-                        {publicacion.votes}
+                        {publicacion.coins}<SketchOutlined />
                       </div>
                       <div className="question__info">
                         <div className="question__info--comment">
