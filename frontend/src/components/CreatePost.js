@@ -1,6 +1,7 @@
 import { Form, Input, Button, Checkbox, Select } from 'antd';
 import Wrapper from "./Wrapper";
 import TextArea from 'antd/lib/input/TextArea';
+import {Link} from "react-router-dom";
 import apiCore from './apiCore';
 import postPublicacion from './apiCore';
 
@@ -41,16 +42,16 @@ const CreatePost = () => {
         }}
         onFinish={onFinish}
       >
+        {/* Sección para el titulo */}
         <Form.Item
           name="title"
           className="create-form-input"
           rules={[
             {
               required: true,
-              message: 'Please input your Tittle!',
+              message: '¡Escribe tu titulo!',
             },
-          ]}
-        >
+          ]}>
         <Input 
         maxLength="80"
         placeholder="title" />
@@ -61,24 +62,42 @@ const CreatePost = () => {
           rules={[
             {
               required: true,
-              message: 'Write your post...',
+              message: '¡Escribe tu publicación!',
             },
-          ]}
-        >
-          
+          ]}>
+          {/* Sección para la descripción */}          
           <TextArea
-          placeholder="Describe your post in less than 1500 characters"
+          placeholder="Describe tu publicación usando menos de 1500 caracteres"
           rows="12"
           maxLength="1500"
           />
         </Form.Item>
+        {/* Sección para las monedas */}
+        <div className="coins">
+        <p>Modenas:</p>
+        <Form.Item 
+          name="coins"
+          rules={[
+            {
+              required: true,
+              message: '¡Inserte una cantidad de monedas válidas!',
+            },
+          ]}>
+          <Input
+            type="number"
+            name="coins"
+            placeholder="Ingrese sus Monedas"
+          />
+        </Form.Item>
+        </div>
         <div className="tags">
         <p>Tags: </p>
+        {/* Sección para los tags */}
         <Form.Item name="tags" className="tags__select">
         <Select
           mode="multiple"
           allowClear
-          placeholder="Select your tags"
+          placeholder="Selecciona tus tags"
           maxTagCount={3}
         >
           {tags}
@@ -88,7 +107,9 @@ const CreatePost = () => {
         <Form.Item>
           <apiCore>
           <Button  type="primary" htmlType="submit" className="create-form-button">
+            <Link to={"/PublicacionRealizada"}>
             Publicar
+            </Link>
           </Button>
           </apiCore>
         </Form.Item>
