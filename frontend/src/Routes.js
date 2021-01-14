@@ -4,6 +4,7 @@ import CustomLayout from './components/CustomLayout'
 import {
   BrowserRouter as Router,
   Switch,
+  Redirect,
   Route,
 } from "react-router-dom";
 import QuestionList from "./components/QuestionList";
@@ -13,6 +14,11 @@ import CreatePost from "./components/CreatePost";
 import Prueba from './components/Prueba';
 import Profile from './components/Profile'
 import PostDone from './components/PostDone';
+
+export  const ProtectedComponent = () => {
+    return <Redirect to='http://localhost:3000/'/>
+}
+
 
 const questions = [
   {
