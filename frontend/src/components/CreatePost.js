@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox, Select } from 'antd';
+import { Form, Input, Button, Checkbox, Select, Alert } from 'antd';
 import Wrapper from "./Wrapper";
 import TextArea from 'antd/lib/input/TextArea';
 import {Link} from "react-router-dom";
@@ -106,17 +106,16 @@ const CreatePost = () => {
         </div>
         <Form.Item>
           <apiCore>
-          <Button  type="primary" htmlType="submit" className="create-form-button">
-            <Link to={"/PublicacionRealizada"}>
+          <Button  onClick={() => { alert('Publicación Realizada') }} type="primary" htmlType="submit" className="create-form-button"  >
             Publicar
-            </Link>
           </Button>
           </apiCore>
         </Form.Item>
       </Form>
+      <a href="http://localhost:3000/">    Regresar al Home</a>
     </Wrapper> 
-
-  );
+      
+    );
 };
 
 export default CreatePost;
