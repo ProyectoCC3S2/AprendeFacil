@@ -55,8 +55,8 @@ const RegistrationForm = () => {
 
   const registrar = async() => {
     const NuevoUsuario = {email, nickname, password, phone}
-    const respuesta = await Axios.post('http://localhost:4000/api', NuevoUsuario)
-    console.log(respuesta)
+    //const respuesta = await Axios.post('http://localhost:4000/api', NuevoUsuario)
+   // console.log(respuesta)
     console.log(NuevoUsuario)
   };
 
