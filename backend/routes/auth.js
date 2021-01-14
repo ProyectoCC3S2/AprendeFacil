@@ -1,5 +1,5 @@
-const express = require('express'); // Creamos la ruta
-const router = express.Router(); // Objeto para expotar 
+const express = require('express');
+const router = express.Router();
 
 const { signup, signin, signout } = require('../controllers/authController');
 

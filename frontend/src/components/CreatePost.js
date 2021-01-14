@@ -8,6 +8,7 @@ import postPublicacion from './apiCore';
 const CreatePost = () => {
   const onFinish = (values) => {
     return fetch(
+      
       `http://localhost:4000/api/publicacion/createpublicacion`,
       {
           crossDomain:true,
@@ -17,6 +18,7 @@ const CreatePost = () => {
       })
     .then(response => {
       console.log(response)
+      window.location.href="http://localhost:3000/";
       return response.json()
   })
   .catch(err => console.log(err));
@@ -112,7 +114,7 @@ const CreatePost = () => {
           </apiCore>
         </Form.Item>
       </Form>
-      <a href="http://localhost:3000/">    Regresar al Home</a>
+      
     </Wrapper> 
       
     );
