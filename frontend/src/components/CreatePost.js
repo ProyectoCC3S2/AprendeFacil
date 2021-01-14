@@ -18,7 +18,7 @@ const CreatePost = () => {
       })
     .then(response => {
       console.log(response)
-      window.location.href="http://localhost:3000/";
+      window.location.href="/PublicacionRealizada";
       return response.json()
   })
   .catch(err => console.log(err));
@@ -108,7 +108,7 @@ const CreatePost = () => {
         </div>
         <Form.Item>
           <apiCore>
-          <Button  onClick={() => { alert('Publicación Realizada') }} type="primary" htmlType="submit" className="create-form-button"  >
+          <Button   type="primary" htmlType="submit" className="create-form-button"  >
             Publicar
           </Button>
           </apiCore>
