@@ -72,6 +72,11 @@
   flex-direction: column;
 }
 
+.recargar-form {
+  max-width: 500px;
+  display: inline-block;
+}
+
 .split-menu{
   display: flex;
   justify-content: space-between;
