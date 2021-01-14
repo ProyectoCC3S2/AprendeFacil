@@ -70,6 +70,12 @@ const Routes = () => {
           <Route path="/PublicacionRealizada">
             <PostDone/>
           </Route>
+          <Route path="/RecargarMonedas">
+            <RecargarMonedas />
+          </Route>
+          <Route path="/ConvertirMonedas">
+            <ConvertirMonedas />
+          </Route>
           <Route path="/VerPerfil">
             <Profile/>
           </Route>
