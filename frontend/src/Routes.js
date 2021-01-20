@@ -14,6 +14,9 @@ import CreatePost from "./components/CreatePost";
 import Prueba from './components/Prueba';
 import Profile from './components/Profile'
 import PostDone from './components/PostDone';
+import RecargarMonedas from './components/RecargarMonedas'
+import ConvertirMonedas from './components/ConvertirMonedas';
+
 
 export  const ProtectedComponent = () => {
     return <Redirect to='http://localhost:3000/'/>
@@ -69,6 +72,12 @@ const Routes = () => {
           </Route>
           <Route path="/PublicacionRealizada">
             <PostDone/>
+          </Route>
+          <Route path="/RecargarMonedas">
+            <RecargarMonedas />
+          </Route>
+          <Route path="/ConvertirMonedas">
+            <ConvertirMonedas />
           </Route>
           <Route path="/VerPerfil">
             <Profile/>
