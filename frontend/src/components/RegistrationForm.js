@@ -8,7 +8,7 @@ import {
   Button,
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import Wrapper from "./Wrapper";
+import Wrapper2 from "./Wrapper2";
 import Axios from 'axios';
 
 
@@ -73,7 +73,7 @@ const RegistrationForm = () => {
   );
 
   return (
-    <Wrapper>
+    <Wrapper2>
       <div>
           <h2>Registrarse</h2>
       </div>  
@@ -134,7 +134,6 @@ const RegistrationForm = () => {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
-
                 return Promise.reject('The two passwords that you entered do not match!');
               },
             }),
@@ -200,12 +199,12 @@ const RegistrationForm = () => {
           </Checkbox>
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" href="/IniciarSesion">
             Register
           </Button>
         </Form.Item>
       </Form>
-    </Wrapper>
+    </Wrapper2>
   );
 };
 
