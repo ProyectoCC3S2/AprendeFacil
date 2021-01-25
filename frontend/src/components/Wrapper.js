@@ -1,5 +1,5 @@
 import {Layout, Menu } from 'antd';
-import { MailOutlined, UserOutlined, CloseOutlined } from '@ant-design/icons';
+import { MailOutlined, UserOutlined, CloseOutlined, SketchOutlined  } from '@ant-design/icons';
 import * as React from "react";
 import {Link} from "react-router-dom";
 const { Header, Content, Footer } = Layout;
@@ -23,43 +23,36 @@ function Wrapper(props) {
         </Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to={"/IniciarSesion"}>
-        Iniciar Sesión
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="3">
-      <Link to={"/Registrarse"}>
-        Registrarse
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="4">
       <Link to={"/CrearPublicacion"}>
         Crear Publicación
       </Link>
       </Menu.Item>
-      <Menu.Item key="5">
+      <Menu.Item key="3">
       <Link to={"/RecargarMonedas"}>
         Recargar Monedas
       </Link>
       </Menu.Item>
-      <Menu.Item key="6">
+      <Menu.Item key="4">
       <Link to={"/ConvertirMonedas"}>
         Convertir Monedas
       </Link>
       </Menu.Item>
       <SubMenu title={<span> Usuario</span>}>
-        <Menu.Item key="7">
+        <Menu.Item key="5">
           <Link to={"/VerPerfil"}>
           <UserOutlined /> Perfil
           </Link>
         </Menu.Item>
-        <Menu.Item key="8">
+        <Menu.Item key="6">
           <Link to={"/"}>
           <MailOutlined /> Mensajes
           </Link>
         </Menu.Item>
-        <Menu.Item key="9">
-          <Link to={"/"}>
+        <Menu.Item key="7">
+          <SketchOutlined />Monedas: 100
+        </Menu.Item>
+        <Menu.Item key="8">
+          <Link to={"/IniciarSesion"}>
           <CloseOutlined /> Salir
           </Link>
         </Menu.Item>

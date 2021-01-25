@@ -1,11 +1,11 @@
-import Wrapper from './Wrapper';
+import Wrapper2 from './Wrapper2';
 import React, {useEffect, useState} from 'react';
 import { getPublicacion } from "./apiCore"
 import {Link} from "react-router-dom";
 import { SketchOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
-class Prueba extends React.Component {
+class Home2 extends React.Component {
   state = {
     publicaciones: [],
     publicacionesBackup: [],
@@ -57,7 +57,7 @@ class Prueba extends React.Component {
 
   render(){
     return(
-      <Wrapper>
+      <Wrapper2>
         <h1>Lista de todas las preguntas en el Foro</h1>
         <div className="search_tittle">
             Buscador:
@@ -101,12 +101,12 @@ class Prueba extends React.Component {
             </div>
           </div>
         </div>
-      </Wrapper>
+      </Wrapper2>
     );
   }
 }
 
-export default Prueba
+export default Home2
  /*
  {this.state.publicaciones.map( publicacion => (
                   <Link to={`/pregunta/${publicacion._id}`}>

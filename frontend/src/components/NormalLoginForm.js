@@ -1,6 +1,6 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import Wrapper from "./Wrapper";
+import Wrapper2 from "./Wrapper2";
 
 
 const NormalLoginForm = () => {
@@ -9,7 +9,7 @@ const NormalLoginForm = () => {
   };
 
   return (     
-    <Wrapper>
+    <Wrapper2>
       <div>
           <h2>Iniciar sesión</h2>
       </div>  
@@ -58,13 +58,13 @@ const NormalLoginForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <Button type="primary" htmlType="submit" href="/" className="login-form-button">
             Log in
           </Button>
           Or <a href="/Registrarse">register now!</a>
         </Form.Item>
       </Form>
-    </Wrapper> 
+    </Wrapper2> 
 
   );
 };

@@ -179,3 +179,9 @@
   margin: 0px 0px 0px 0px;
 }
 
+.search_tittle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 10px;  
+}

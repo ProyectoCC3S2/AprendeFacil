@@ -16,6 +16,7 @@ import Profile from './components/Profile'
 import PostDone from './components/PostDone';
 import RecargarMonedas from './components/RecargarMonedas'
 import ConvertirMonedas from './components/ConvertirMonedas';
+import Home2 from './components/Home2';
 
 
 export  const ProtectedComponent = () => {
@@ -81,6 +82,9 @@ const Routes = () => {
           </Route>
           <Route path="/VerPerfil">
             <Profile/>
+          </Route>
+          <Route path="/Inicio2">
+            <Home2 />
           </Route>
           <Route path="/">
             <Prueba />
