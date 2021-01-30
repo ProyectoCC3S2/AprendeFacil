@@ -6,7 +6,22 @@ import Wrapper2 from "./Wrapper2";
 const NormalLoginForm = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+    return fetch(
+      
+      `http://localhost:4000/api/auth/signin`,
+      {
+          crossDomain:true,
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(values),
+      })
+    .then(response => {
+      console.log(response)
+      return response.json()
+    })
+    .catch(err => console.log(err));
   };
+  
 
   return (     
     <Wrapper2>
@@ -58,7 +73,7 @@ const NormalLoginForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" href="/" className="login-form-button">
+          <Button type="primary" htmlType="submit" className="login-form-button">
             Ingresar
           </Button>
           O <a href="/Registrarse">¡Registrarse Ahora!</a>
