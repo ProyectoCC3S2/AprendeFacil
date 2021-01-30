@@ -65,7 +65,7 @@ const RegistrationForm = () => {
   const onFinish = (values) => {
     return fetch(
       
-      `http://localhost:4000/api/auth/signin`,
+      `http://localhost:4000/api/auth/signup`,
       {
           crossDomain:true,
           method: 'POST',
