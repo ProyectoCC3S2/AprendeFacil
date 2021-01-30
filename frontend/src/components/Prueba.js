@@ -41,7 +41,10 @@ class Prueba extends React.Component {
 
     let newData = data.filter(function(item){
         // Variable de titulo
-        let itemData = item.title.toUpperCase() // titulo se refiere al titulo de la publicación en la base de datos
+        let itemDataTittle = item.tittle.toUpperCase() // titulo se refiere al titulo de la publicación en la base de datos
+        // Variable de la descripción 
+        let itemDataComment = item.comment.toUpperCase() // comment se refiere a la descripción de la publicación en la base de datos
+        let itemData = itemDataTittle + ' ' + itemDataComment
         // Variable de buscar
         let textData = text.toUpperCase()
         // Filtrado para ver si es verdadero o no, luego de retorna
@@ -61,7 +64,7 @@ class Prueba extends React.Component {
         <h1>Lista de todas las preguntas en el Foro</h1>
         <div className="search_tittle">
             Buscador:
-            <input className="create-form-input__search" placeholder="Ingresar titulo o plabra clave..."  value={this.state.text} onChange={(text) => this.filtro(text)}/>
+            <input className="create-form-input__search" placeholder="Ingresar titulo, descripción o palabra clave..."  value={this.state.text} onChange={(text) => this.filtro(text)}/>
         </div>
         <br></br>
         <br></br>
@@ -78,7 +81,7 @@ class Prueba extends React.Component {
                       </div>
                       <div className="question__info">
                         <div className="question__info--comment">
-                        <div className="question__info--title">{publicacion.title}</div>
+                        <div className="question__info--title">{publicacion.tittle}</div>
                           {publicacion.comment}
                         </div>
                         <div className="question__info--data">

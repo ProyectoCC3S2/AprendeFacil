@@ -24,6 +24,7 @@ const CreatePost = () => {
   .catch(err => console.log(err));
   };
 
+  // Sección para los tags, que van hacer cursos que puede elegir el usuario
   const { Option } = Select;
   const cursos = ['Lenguaje','Literatura','Historia','Geografía','Psicología','Filosofía','Aritmetica','Álgebra','Trigonometría','Geometría','Química','Física','Biología','Anatomía','Ingles'];
   const tags =[]
@@ -46,7 +47,7 @@ const CreatePost = () => {
       >
         {/* Sección para el titulo */}
         <Form.Item
-          name="title"
+          name="tittle"
           className="create-form-input"
           rules={[
             {
@@ -56,7 +57,7 @@ const CreatePost = () => {
           ]}>
         <Input 
         maxLength="80"
-        placeholder="title" />
+        placeholder="Titulo" />
         </Form.Item>
         <Form.Item
           name="comment"
@@ -107,11 +108,9 @@ const CreatePost = () => {
         </Form.Item>
         </div>
         <Form.Item>
-          <apiCore>
           <Button   type="primary" htmlType="submit" className="create-form-button"  >
             Publicar
           </Button>
-          </apiCore>
         </Form.Item>
       </Form>
       

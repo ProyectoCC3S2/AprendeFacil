@@ -27,6 +27,14 @@ const Profile = () => {
                     <div className="profile__info--tittle">Información de Usuario</div>
                     <div className="profile__info--item">
                         <div className="profile__info--item--label">
+                            Nickname:
+                        </div>
+                        <div className="profile__info--item--data">
+                            Gashetita 
+                        </div>
+                    </div>
+                    <div className="profile__info--item">
+                        <div className="profile__info--item--label">
                             Nombres:
                         </div>
                         <div className="profile__info--item--data">

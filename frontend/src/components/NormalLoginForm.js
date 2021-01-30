@@ -22,46 +22,46 @@ const NormalLoginForm = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          name="username"
+          name="nickname"
           rules={[
             {
               required: true,
-              message: 'Please input your Username!',
+              message: '¡Ingresa tu nombre de usuario!',
             },
           ]}
         >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Usuario" />
         </Form.Item>
         <Form.Item
           name="password"
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: '¡Ingresa tu contraseña!',
             },
           ]}
         >
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
-            placeholder="Password"
+            placeholder="Contraseña"
           />
         </Form.Item>
         <Form.Item>
           <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
+            <Checkbox>Recuerdame</Checkbox>
           </Form.Item>
 
           <a className="login-form-forgot" href="">
-            Forgot password
+            Recordar contraseña
           </a>
         </Form.Item>
 
         <Form.Item>
           <Button type="primary" htmlType="submit" href="/" className="login-form-button">
-            Log in
+            Ingresar
           </Button>
-          Or <a href="/Registrarse">register now!</a>
+          O <a href="/Registrarse">¡Registrarse Ahora!</a>
         </Form.Item>
       </Form>
     </Wrapper2> 
