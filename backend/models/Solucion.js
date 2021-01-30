@@ -19,18 +19,18 @@ const solucionSchema = new mongoose.Schema(
         required: true
         },
 
-        userData: {
-            photo : {
-                type: String,
-                required: false
-            },
-            name : {
-                type: String,
-                required: false
-            },
-        type: JSON,
-        required: false,    
-        },
+        //userData: {
+        //    photo : {
+        //        type: String,
+        //        required: false
+        //    },
+        //    name : {
+        //        type: String,
+        //        required: false
+        //    },
+        //type: JSON,
+        //required: false,    
+        //},
     },
         {timestamps: true},
 );
