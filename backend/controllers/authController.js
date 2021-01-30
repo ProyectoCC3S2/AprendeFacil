@@ -1,8 +1,10 @@
 const Usuario = require('../models/Usuario');
+const {errorHandler} = require('../helpers/dberrorHandler');
+/*
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
-
-
+*/
+/*
 exports.signup = (req, res) => {
   console.log('req.body', req.body); // { "name": "Arturo Filio", "email": "test@test.com", "password":"test123" }
   const usuario = new Usuario(req.body);
@@ -20,11 +22,23 @@ exports.signup = (req, res) => {
     })
   })
 }
+*/
 
 
 exports.signin = (req, res) => { 
-  // find the usuario based on email
-  const {email, password} = req.body
+  const usuario = new Usuario(req.body)
+  // const {email, password} = req.body
+  usuario.save((err,data) => {
+    if(err){
+        return res.status(400).json({
+            error: errorHandler(err)
+        })
+    }
+    res.json(data);
+  })
+
+
+  /*
   User.findOne({email}, (error, user) => {
     if (error||!user) {
       return res.status(400).json({
@@ -44,9 +58,10 @@ exports.signin = (req, res) => {
     // return response with user and token to frontend client
     const {_id, name, email, role} = user
     return res.json({token, user: {_id, email, name, role}})
-  });
+  });*/
 }
 
+/*
 exports.signout = (req, res) => { 
   res.clearCookie('t')
   res.json({message: "Signout success"});
@@ -63,3 +78,4 @@ exports.userById = (req, res, next, id) => {
     next()
   });
 }
+*/

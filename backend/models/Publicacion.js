@@ -28,7 +28,7 @@ const publicacionSchema = new mongoose.Schema(
         required: false
         },
 
-        title: {
+        tittle: {
         type: String,
         required: true
         },
@@ -43,18 +43,18 @@ const publicacionSchema = new mongoose.Schema(
         required: false,
         },
 
-        userData: {
-            photo : {
-                type: String,
-                required: false
-            },
-            name : {
-                type: String,
-                required: false
-            },
-        type: JSON,
-        required: false,
-        },
+        //userData: {
+        //    photo : {
+        //        type: String,
+        //        required: false
+        //    },
+        //    name : {
+        //        type: String,
+        //        required: false
+        //    },
+        //type: JSON,
+        //required: false,
+        //},
     },
         {timestamps: true},
 );
