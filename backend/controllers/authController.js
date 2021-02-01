@@ -1,6 +1,8 @@
 const Usuario = require('../models/Usuario');
 const {errorHandler} = require('../helpers/dberrorHandler');
-const crypto = require('crypto')
+const crypto = require('crypto');
+const { throws } = require('assert');
+const { exception } = require('console');
 let salt = 'f844b09ff50c'
 
 
@@ -80,10 +82,12 @@ exports.signin = (req,res) => {
               nickname: user.nickname,
               password: user.password,
             }
-            res.redirect('/');
-          } else {
-            res.json({ error: 'Usuario no encontrado' })
+            res.error = false;
           }
+          else {
+            res.error = true;
+          }
+          res.send(res.error);
         })
         .catch(err => {
           res.send('error:' + err)

@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 //const crypto = require('crypto');
 //const { v1: uuidv1 } = require('uuid');
@@ -21,17 +20,17 @@ const usuarioSchema = new mongoose.Schema(
     {        
         first_name: {
         type: String,
-        required: true
+        required: false
         },
 
         last_name: {
         type: String,
-        required: true
+        required: false
         },
 
         email: {
         type: String,
-        required: true
+        required: false
         },
 
         nickname: {
@@ -49,6 +48,10 @@ const usuarioSchema = new mongoose.Schema(
         required: true,
         },
 
+        remember: { 
+          type: Boolean,
+          required: false,
+          },
         //role: {
         //type: Number,
         //default: 0
