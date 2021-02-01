@@ -30,7 +30,7 @@ const Profile = () => {
                             Nickname:
                         </div>
                         <div className="profile__info--item--data">
-                            Gashetita 
+                            aprendef 
                         </div>
                     </div>
                     <div className="profile__info--item">

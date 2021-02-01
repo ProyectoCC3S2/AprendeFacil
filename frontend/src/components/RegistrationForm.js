@@ -73,8 +73,6 @@ const RegistrationForm = () => {
           body: JSON.stringify(values),
       })
     .then(response => {
-      console.log(response)
-      window.location.href="/IniciarSesion";
       return response.json()
     })
     .catch(err => console.log(err));
@@ -219,6 +217,7 @@ const RegistrationForm = () => {
         <Form.Item
           name="phone"
           label="Telofono"
+          
           rules={[
             {
               required: true,
@@ -228,10 +227,12 @@ const RegistrationForm = () => {
           onChange = {e=>setphone(e.target.value)}
         >
           <Input
+          required pattern="[1-9]{9}"
             addonBefore={prefixSelector}
             style={{
               width: '100%',
             }}
+            
           />
         </Form.Item>
 
