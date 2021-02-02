@@ -1,7 +1,6 @@
-
 const mongoose = require('mongoose');
-const crypto = require('crypto');
-const { v1: uuidv1 } = require('uuid');
+//const crypto = require('crypto');
+//const { v1: uuidv1 } = require('uuid');
 /*
 {
     "usuario": {
@@ -19,14 +18,19 @@ const { v1: uuidv1 } = require('uuid');
 */
 const usuarioSchema = new mongoose.Schema(
     {        
-        name: {
+        first_name: {
         type: String,
-        required: true
+        required: false
+        },
+
+        last_name: {
+        type: String,
+        required: false
         },
 
         email: {
         type: String,
-        required: true
+        required: false
         },
 
         nickname: {
@@ -39,25 +43,29 @@ const usuarioSchema = new mongoose.Schema(
         required: false
         },
 
-        hashed_password: { 
+        password: { 
         type: String,
         required: true,
         },
 
-        salt: String,
+        remember: { 
+          type: Boolean,
+          required: false,
+          },
+        //role: {
+        //type: Number,
+        //default: 0
+        //},
 
-        role: {
-        type: Number,
-        default: 0
-        },
-
-        inventory: {
-        type: Array,
-        default: []
-        }
+        // inventory: {
+        // type: Array,
+        //default: []
+        //}
         },
         {timestamps: true}
 );
+
+/*
 
 usuarioSchema.virtual('password')
 .set(function(password) {
@@ -85,5 +93,7 @@ usuarioSchema.methods = {
     }
   }
 };
+
+*/
 
 module.exports = mongoose.model("Usuario", usuarioSchema)

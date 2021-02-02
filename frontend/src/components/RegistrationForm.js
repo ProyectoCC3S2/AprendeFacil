@@ -8,7 +8,7 @@ import {
   Button,
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import Wrapper from "./Wrapper";
+import Wrapper2 from "./Wrapper2";
 import Axios from 'axios';
 
 
@@ -48,17 +48,35 @@ const tailFormItemLayout = {
 const RegistrationForm = () => {
   const [form] = Form.useForm();
 
+  const [first_name, setfirst] = React.useState('');
+  const [last_name, setlast] = React.useState('');
   const [email, setemail] = React.useState('');
   const [nickname, setnickname] = React.useState('');
   const [password, setpassword] = React.useState('');
   const [phone, setphone] = React.useState('');
 
-  const registrar = async() => {
-    const NuevoUsuario = {email, nickname, password, phone}
+  //const registrar = async() => {
+    //const NuevoUsuario = {first_name, last_name, email, nickname, password, phone}
     //const respuesta = await Axios.post('http://localhost:4000/api', NuevoUsuario)
    // console.log(respuesta)
-    console.log(NuevoUsuario)
-  };
+    //console.log(NuevoUsuario)
+  //};
+
+  const onFinish = (values) => {
+    return fetch(
+      
+      `http://localhost:4000/api/auth/signup`,
+      {
+          crossDomain:true,
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(values),
+      })
+    .then(response => {
+      return response.json()
+    })
+    .catch(err => console.log(err));
+    };
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -73,7 +91,7 @@ const RegistrationForm = () => {
   );
 
   return (
-    <Wrapper>
+    <Wrapper2>
       <div>
           <h2>Registrarse</h2>
       </div>  
@@ -82,21 +100,53 @@ const RegistrationForm = () => {
         {...formItemLayout}
         form={form}
         name="register"
-        onFinish = {registrar}
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
         scrollToFirstError
         className="register-form"
       >
+        <Form.Item
+          name="first_name"
+          label="Nombre"
+          rules={[
+            {
+              required: true,
+              message: 'Es necesario ingresar su nombre',
+            },
+          ]}
+          onChange = {e=>setfirst(e.target.value)}
+        >
+          <Input />
+        </Form.Item>
+        
+
+        <Form.Item
+          name="last_name"
+          label="Apellidos"
+          rules={[
+            {
+              required: true,
+              message: 'Es necesario ingresar sus apellidos',
+            },
+          ]}
+          onChange = {e=>setlast(e.target.value)}
+        >
+          <Input />
+        </Form.Item>
+
         <Form.Item
           name="email"
           label="E-mail"
           rules={[
             {
               type: 'email',
-              message: 'The input is not valid E-mail!',
+              message: 'Ingresaste un correo no valido',
             },
             {
               required: true,
-              message: 'Please input your E-mail!',
+              message: 'Por favor, ingrese su email',
             },
           ]}
           onChange = {e=>setemail(e.target.value)}
@@ -106,7 +156,7 @@ const RegistrationForm = () => {
 
         <Form.Item
           name="password"
-          label="Password"
+          label="Contraseña"
           rules={[
             {
               required: true,
@@ -121,21 +171,20 @@ const RegistrationForm = () => {
 
         <Form.Item
           name="confirm"
-          label="Confirm Password"
+          label="Confirmar Contraseña"
           dependencies={['password']}
           hasFeedback
           rules={[
             {
               required: true,
-              message: 'Please confirm your password!',
+              message: 'Por favor confirma tu contraseña',
             },
             ({ getFieldValue }) => ({
               validator(rule, value) {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
-
-                return Promise.reject('The two passwords that you entered do not match!');
+                return Promise.reject('Las contraseñas que has ingresado no coinciden');
               },
             }),
           ]}
@@ -148,7 +197,7 @@ const RegistrationForm = () => {
           label={
             <span>
               Nickname&nbsp;
-              <Tooltip title="What do you want others to call you?">
+              <Tooltip title="¿Con que nombre te gustaría que te conozcan en nuestra app?">
                 <QuestionCircleOutlined />
               </Tooltip>
             </span>
@@ -156,7 +205,7 @@ const RegistrationForm = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your nickname!',
+              message: 'Ingresa tu nickname',
               whitespace: true,
             },
           ]}
@@ -167,20 +216,23 @@ const RegistrationForm = () => {
 
         <Form.Item
           name="phone"
-          label="Phone Number"
+          label="Telofono"
+          
           rules={[
             {
               required: true,
-              message: 'Please input your phone number!',
+              message: 'Ingresa tu número de telefono',
             },
           ]}
           onChange = {e=>setphone(e.target.value)}
         >
           <Input
+          required pattern="[1-9]{9}"
             addonBefore={prefixSelector}
             style={{
               width: '100%',
             }}
+            
           />
         </Form.Item>
 
@@ -190,7 +242,7 @@ const RegistrationForm = () => {
           rules={[
             {
               validator: (_, value) =>
-                value ? Promise.resolve() : Promise.reject('Should accept agreement'),
+                value ? Promise.resolve() : Promise.reject('Acepta los términos y condiciones'),
             },
           ]}
           {...tailFormItemLayout}
@@ -205,7 +257,7 @@ const RegistrationForm = () => {
           </Button>
         </Form.Item>
       </Form>
-    </Wrapper>
+    </Wrapper2>
   );
 };
 

@@ -1,30 +1,51 @@
 const Usuario = require('../models/Usuario');
-const jwt = require('jsonwebtoken');
-const expressJwt = require('express-jwt');
+const {errorHandler} = require('../helpers/dberrorHandler');
+const crypto = require('crypto');
+const { throws } = require('assert');
+const { exception } = require('console');
+let salt = 'f844b09ff50c'
 
 
-exports.signup = (req, res) => {
-  console.log('req.body', req.body); // { "name": "Arturo Filio", "email": "test@test.com", "password":"test123" }
-  const usuario = new Usuario(req.body);
-  usuario.save((error, usuario) => {
-    console.log("reached signup endpoint")
-    if (error) {
-      return res.status(400).json({
-        error: "Please check fields, there was an Error"
-      })
-    }
-    usuario.salt = undefined;
-    usuario.hashed_password = undefined;
-    res.json({
-      usuario
+
+exports.signup = (req, res) => { 
+  const userData = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    nickname : req.body.nickname,
+    phone: req.body.phone, 
+    password: req.body.password,
+  }
+    Usuario.findOne({
+      // Asegúrese de que el nombre de usuario sea único, es decir, que el nombre de usuario no esté ya en la base de datos
+      nickname: req.body.nickname
     })
-  })
-}
+      .then(user => {
+        // Si es usuario es unico lo agrega a la base de datos
+        if (!user) {
+            let hash = crypto.pbkdf2Sync(userData.password, salt,  
+            1000, 64, `sha512`).toString(`hex`);
+            userData.password = hash
+            Usuario.create(userData)
+              .then(user => {
+                // Después de crear con éxito userData muestra el mensaje registrado
+                res.redirect('/')
+              })
+              .catch(err => {
+                // Si se produjo un error al intentar crear userData, continúe y muestre el error
+                res.send('error:' + err)
+              })
+        } else {
+          // Si el nombre de usuario no es único, muestra que el nombre de usuario ya está registrado en una cuenta
+          res.json({ error: 'El nickname ' + req.body.username + ' esta esta registrado con una  cuenta' })
+        }
+      })
+      .catch(err => {
+        res.send('error:' + err)
+})
+    //res.json(data);
 
-
-exports.signin = (req, res) => { 
-  // find the usuario based on email
-  const {email, password} = req.body
+  /*
   User.findOne({email}, (error, user) => {
     if (error||!user) {
       return res.status(400).json({
@@ -44,9 +65,37 @@ exports.signin = (req, res) => {
     // return response with user and token to frontend client
     const {_id, name, email, role} = user
     return res.json({token, user: {_id, email, name, role}})
-  });
+  });*/
 }
 
+exports.signin = (req,res) => {
+      Usuario.findOne({
+        // Verifica si el nombre de usuario esta en la base de datos
+        nickname: req.body.nickname,
+        password: crypto.pbkdf2Sync(req.body.password, salt,  
+          1000, 64, `sha512`).toString(`hex`)
+      })
+        .then(user => {
+          // Si est el nombre entonces existe
+          if (user) {
+            const payload = {
+              nickname: user.nickname,
+              password: user.password,
+            }
+            res.error = false;
+          }
+          else {
+            res.error = true;
+          }
+          res.send(res.error);
+        })
+        .catch(err => {
+          res.send('error:' + err)
+        })
+      //res.json({data});
+}
+
+/*
 exports.signout = (req, res) => { 
   res.clearCookie('t')
   res.json({message: "Signout success"});
@@ -63,3 +112,4 @@ exports.userById = (req, res, next, id) => {
     next()
   });
 }
+*/

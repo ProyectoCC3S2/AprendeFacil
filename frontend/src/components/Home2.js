@@ -1,11 +1,11 @@
-import Wrapper from './Wrapper';
+import Wrapper2 from './Wrapper2';
 import React, {useEffect, useState} from 'react';
 import { getPublicacion } from "./apiCore"
 import {Link} from "react-router-dom";
 import { SketchOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
-class Prueba extends React.Component {
+class Home2 extends React.Component {
   state = {
     publicaciones: [],
     publicacionesBackup: [],
@@ -41,10 +41,7 @@ class Prueba extends React.Component {
 
     let newData = data.filter(function(item){
         // Variable de titulo
-        let itemDataTittle = item.tittle.toUpperCase() // titulo se refiere al titulo de la publicación en la base de datos
-        // Variable de la descripción 
-        let itemDataComment = item.comment.toUpperCase() // comment se refiere a la descripción de la publicación en la base de datos
-        let itemData = itemDataTittle + ' ' + itemDataComment
+        let itemData = item.title.toUpperCase() // titulo se refiere al titulo de la publicación en la base de datos
         // Variable de buscar
         let textData = text.toUpperCase()
         // Filtrado para ver si es verdadero o no, luego de retorna
@@ -60,11 +57,11 @@ class Prueba extends React.Component {
 
   render(){
     return(
-      <Wrapper>
+      <Wrapper2>
         <h1>Lista de todas las preguntas en el Foro</h1>
         <div className="search_tittle">
             Buscador:
-            <input className="create-form-input__search" placeholder="Ingresar titulo, descripción o palabra clave..."  value={this.state.text} onChange={(text) => this.filtro(text)}/>
+            <input className="create-form-input__search" placeholder="Ingresar titulo o plabra clave..."  value={this.state.text} onChange={(text) => this.filtro(text)}/>
         </div>
         <br></br>
         <br></br>
@@ -81,7 +78,7 @@ class Prueba extends React.Component {
                       </div>
                       <div className="question__info">
                         <div className="question__info--comment">
-                        <div className="question__info--title">{publicacion.tittle}</div>
+                        <div className="question__info--title">{publicacion.title}</div>
                           {publicacion.comment}
                         </div>
                         <div className="question__info--data">
@@ -104,12 +101,12 @@ class Prueba extends React.Component {
             </div>
           </div>
         </div>
-      </Wrapper>
+      </Wrapper2>
     );
   }
 }
 
-export default Prueba
+export default Home2
  /*
  {this.state.publicaciones.map( publicacion => (
                   <Link to={`/pregunta/${publicacion._id}`}>
