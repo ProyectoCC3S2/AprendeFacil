@@ -2,8 +2,14 @@ import { Form, Input, Button, Image, Empty } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Wrapper from "./Wrapper";
 
-const Profile = () => {
 
+const Profile = () => {
+    let usuariobj = localStorage.getItem("usuario")
+    let usuario = JSON.parse(usuariobj)
+    const getData = () =>{
+       console.log(usuariobj)
+    }
+    getData()
     return (     
         <Wrapper>
             
@@ -30,7 +36,7 @@ const Profile = () => {
                             Nickname:
                         </div>
                         <div className="profile__info--item--data">
-                            aprendef 
+                        {usuario.nickname}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -38,7 +44,7 @@ const Profile = () => {
                             Nombres:
                         </div>
                         <div className="profile__info--item--data">
-                            Cesar 
+                            {usuario.first_name}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -46,7 +52,7 @@ const Profile = () => {
                             Apellidos:
                         </div>
                         <div className="profile__info--item--data">
-                            Colorado 
+                        {usuario.last_name}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -54,7 +60,7 @@ const Profile = () => {
                             Telefono:
                         </div>
                         <div className="profile__info--item--data">
-                            988900190
+                        {usuario.phone}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -62,7 +68,7 @@ const Profile = () => {
                             Correo:
                         </div>
                         <div className="profile__info--item--data">
-                            ccoloradoc@uni.pe
+                        {usuario.email}
                         </div>   
                     </div>
                     <div className="profile__info--item">
