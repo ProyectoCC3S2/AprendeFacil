@@ -1,27 +1,7 @@
 const mongoose = require('mongoose');
 
 const publicacionSchema = new mongoose.Schema(
-/*
-{
-    "data": {
-        "tags": [
-            "todo",
-            "bien?"
-        ],
-        "_id": "5fecec795aa7651a8496932e",
-        "votes": 10,
-        "title": "NuevoModel",
-        "comment": "NuevoModel",
-        "userData": {
-            "photo": "ejemplo@hotmail",
-            "name": "ryuza"
-        },
-        "createdAt": "2020-12-30T21:09:13.506Z",
-        "updatedAt": "2020-12-30T21:09:13.506Z",
-        "__v": 0
-    }
-}
-*/
+
     {        
         coins: {
         type: Number,
@@ -43,6 +23,11 @@ const publicacionSchema = new mongoose.Schema(
         required: false,
         },
 
+        solutions: {
+            type: Array,
+            required: false,
+        },
+        
         //userData: {
         //    photo : {
         //        type: String,
@@ -60,3 +45,25 @@ const publicacionSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Publicacion", publicacionSchema)
+
+/*
+{
+    "data": {
+        "tags": [
+            "todo",
+            "bien?"
+        ],
+        "_id": "5fecec795aa7651a8496932e",
+        "votes": 10,
+        "title": "NuevoModel",
+        "comment": "NuevoModel",
+        "userData": {
+            "photo": "ejemplo@hotmail",
+            "name": "ryuza"
+        },
+        "createdAt": "2020-12-30T21:09:13.506Z",
+        "updatedAt": "2020-12-30T21:09:13.506Z",
+        "__v": 0
+    }
+}
+*/

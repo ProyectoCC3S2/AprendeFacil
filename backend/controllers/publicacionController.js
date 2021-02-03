@@ -24,6 +24,13 @@ exports.list = (req,res) => {
     })
 }
 
+exports.item = (req,res, next) => {
+    if (req.publicacion) {
+        return res.send(req.publicacion)
+    }
+    next();
+}
+
 exports.remove = (req, res) => {
     let publicacion = req.publicacion
     publicacion.remove((err,data)=>{
@@ -49,4 +56,26 @@ exports.publicacionById = (req, res, next, id) => {
         req.publicacion = publicacion;
         next();
     })
+}
+
+//POR CORREGIR
+exports.updatePublicacion = (req, res = response) => {
+    const publicacionId = req.params.id;
+    Publicacion.findById( publicacionId ).exec((err, publicacion)=>{
+        if(err || !publicacion){
+            return res.status(400).json({
+                error: "Publicacion no encontrada o no existe"
+            })
+        }
+
+        const nuevo = {
+            ...req.body,
+        }
+    
+        Publicacion.findByIdAndUpdate(publicacionId, nuevo, {new:true,useFindAndModify: false});
+        
+        res.json({
+            message: "Publicacion actualizada"
+        });
+    });
 }

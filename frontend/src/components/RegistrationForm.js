@@ -216,18 +216,18 @@ const RegistrationForm = () => {
 
         <Form.Item
           name="phone"
-          label="Telofono"
+          label="Telefono"
           
           rules={[
             {
-              required: true,
+              required: false,
               message: 'Ingresa tu número de telefono',
             },
           ]}
           onChange = {e=>setphone(e.target.value)}
         >
           <Input
-          required pattern="[1-9]{9}"
+          required pattern="\d{9}"
             addonBefore={prefixSelector}
             style={{
               width: '100%',

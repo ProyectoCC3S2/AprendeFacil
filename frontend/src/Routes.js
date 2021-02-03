@@ -59,8 +59,8 @@ const Routes = () => {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/Pregunta/:id">
-            <CustomLayout questions={questions} />
+          <Route path="/Pregunta/:id" component={CustomLayout}>
+            <CustomLayout />
           </Route>
           <Route path="/IniciarSesion">
             <NormalLoginForm />

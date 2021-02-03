@@ -70,7 +70,7 @@ class Home2 extends React.Component {
               <div className = "container">
                 <div className = "row"> 
                 {this.state.publicaciones.map( publicacion => (
-                  <Link to={`/pregunta/${publicacion._id}`}>
+                  <Link to={`/Pregunta/${publicacion._id}`}>
                     <div className="question">
 
                       <div className="question__vote">
