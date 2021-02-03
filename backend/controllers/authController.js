@@ -82,15 +82,12 @@ exports.signin = (req,res) => {
               nickname: user.nickname,
               password: user.password,
             }
-            res.error = false;
+            res.send(res.json(user));
           }
           else {
-            res.error = true;
+            res.send({ error: 'Usuario No Existe' });
           }
-          res.send(res.error);
-        })
-        .catch(err => {
-          res.send('error:' + err)
+          
         })
       //res.json({data});
 }
