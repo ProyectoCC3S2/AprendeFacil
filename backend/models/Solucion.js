@@ -5,34 +5,27 @@ const solucionSchema = new mongoose.Schema(
 
     {        
         votes: {
-        type: Number,
-        required: true
+            type: Number,
+            required: true
         },
 
-        title: {
-        type: String,
-        required: true
+        solution: {
+            type: String,
+            required: true
         },
 
-        description: {
-        type: String,
-        required: true
+        idpost: {
+            type: String,
+            required: true
         },
-
+    
         //userData: {
-        //    photo : {
-        //        type: String,
-        //        required: false
+        //    id: String
         //    },
-        //    name : {
-        //        type: String,
-        //        required: false
-        //    },
-        //type: JSON,
-        //required: false,    
+        //required: true,    
         //},
     },
         {timestamps: true},
 );
 
-module.exports = mongoose.model("Solucion", solucionSchema)
+module.exports = mongoose.model("Solucion", solucionSchema);
