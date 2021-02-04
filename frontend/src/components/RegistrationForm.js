@@ -147,7 +147,7 @@ const RegistrationForm = () => {
             },
             {
               required: true,
-              message: 'Por favor, ingrese su email',
+              message: '¡Por favor, ingrese su email!',
             },
           ]}
           onChange = {e=>setemail(e.target.value)}
@@ -161,7 +161,7 @@ const RegistrationForm = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: '¡Por favor, ingrese su contraseña!',
             },
           ]}
           hasFeedback
