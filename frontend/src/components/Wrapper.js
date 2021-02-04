@@ -6,6 +6,10 @@ const { Header, Content, Footer } = Layout;
 const SubMenu = Menu.SubMenu;
 
 function Wrapper(props) {
+
+  let usuariobj = localStorage.getItem("usuario")
+  let usuario = JSON.parse(usuariobj)
+
   return (
     <Layout className="custom-layout">
       <Header>
@@ -49,7 +53,7 @@ function Wrapper(props) {
           </Link>
         </Menu.Item>
         <Menu.Item key="7">
-          <SketchOutlined />Monedas: 100
+          <SketchOutlined />Monedas: {usuario.coins}
         </Menu.Item>
         <Menu.Item key="8">
           <Link to={"/IniciarSesion"}>
