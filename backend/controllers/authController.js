@@ -100,6 +100,37 @@ exports.signin = (req,res) => {
       //res.json({data});
 }
 
+exports.updateMoney = async (req, res = response) => {
+  const authId = req.params.authId;
+
+  try {
+      const usuario = Usuario.findById( authId );
+      if(!usuario){
+          res.status(404).json({
+              error: "Usuario no encontrada o no existe"
+          });
+      }
+
+      const dineroActual = {
+          ...req.body
+      }
+
+      const dineroActualizado = await Usuario.findByIdAndUpdate(authId, dineroActual,{new:true});
+
+      res.json({
+          message: "Actualizado",
+          money: dineroActualizado
+      })
+
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({
+          error: "Error interno"
+      });
+  }
+}
+
+
 /*
 exports.protegido = (req,res) => {
 
