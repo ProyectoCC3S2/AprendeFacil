@@ -56,7 +56,7 @@ const usuarioSchema = new mongoose.Schema(
         photo:{
           type: String,
           required: false,
-          default: "https://www.flaticon.com/svg/vstatic/svg/20/20079.svg?token=exp=1612404177~hmac=696269f6531ff597667fcb0df21eabe5"
+          default: "https://image.flaticon.com/icons/png/512/47/47774.png"
         }
         //role: {
         //type: Number,
