@@ -23,7 +23,7 @@ export  const ProtectedComponent = () => {
     return <Redirect to='http://localhost:3000/'/>
 }
 
-
+/*
 const questions = [
   {
     id: '1',
@@ -50,6 +50,7 @@ const questions = [
     }
   }
 ]
+*/
 
 const Routes = () => {
 
@@ -84,13 +85,10 @@ const Routes = () => {
             <Profile/>
           </Route>
           <Route path="/Inicio2">
-            <Home2 />
-          </Route>
-          <Route path="/">
             <Prueba />
           </Route>
-          <Route path="/Home">
-            <QuestionList questions = {questions} />
+          <Route path="/">
+            <Home2 />
           </Route>
         </Switch>
       </Router>

@@ -15,7 +15,7 @@ const NormalLoginForm = () => {
       })
     .then(response => { 
       response.json().then(data => localStorage.setItem("usuario",JSON.stringify(data)))
-      window.location.href = "/"
+      window.location.href = "/Inicio2"
     })
     .catch(error => console.log(error))
   };

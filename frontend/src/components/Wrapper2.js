@@ -9,7 +9,7 @@ function Wrapper2(props) {
   return (
     <Layout className="custom-layout">
       <Header>
-        <Link to={"/Inicio2"}>
+        <Link to={"/"}>
           <h1 className="title">
             Aprende-Facil
           </h1>
@@ -18,7 +18,7 @@ function Wrapper2(props) {
     <div>
     <Menu theme="dark" mode="horizontal" className="split-menu">
       <Menu.Item key="1">
-        <Link to={"/Inicio2"}>
+        <Link to={"/"}>
         Inicio
         </Link>
       </Menu.Item>

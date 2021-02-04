@@ -73,6 +73,7 @@ const RegistrationForm = () => {
           body: JSON.stringify(values),
       })
     .then(response => {
+      window.location.href="/IniciarSesion"
       return response.json()
     })
     .catch(err => console.log(err));
