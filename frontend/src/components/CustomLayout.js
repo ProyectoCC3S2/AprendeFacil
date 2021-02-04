@@ -79,7 +79,7 @@ class CustomLayout extends React.Component {
   return (
     <Wrapper>
       <div className="main-question">
-        <HeaderQuestion title={this.state.post.title} />
+        <HeaderQuestion title={this.state.post.tittle} />
 
         <div className="comment__main">
         <div className="comment__data">
