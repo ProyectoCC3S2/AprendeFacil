@@ -1,6 +1,7 @@
 const Usuario = require('../models/Usuario');
 const {errorHandler} = require('../helpers/dberrorHandler');
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 const { throws } = require('assert');
 const { exception } = require('console');
 let salt = 'f844b09ff50c'
@@ -69,6 +70,7 @@ exports.signup = (req, res) => {
 }
 
 exports.signin = (req,res) => {
+
       Usuario.findOne({
         // Verifica si el nombre de usuario esta en la base de datos
         nickname: req.body.nickname,
@@ -76,13 +78,19 @@ exports.signin = (req,res) => {
           1000, 64, `sha512`).toString(`hex`)
       })
         .then(user => {
-          // Si est el nombre entonces existe
+          // Si esta, el nombre entonces existe
           if (user) {
             const payload = {
               nickname: user.nickname,
               password: user.password,
             }
             res.send(res.json(user));
+            
+            const token = jwt.sign(
+              { nickname },
+              process.env.API_KEY,
+              { expiresIn: process.env.TOKEN_EXPIRES_IN },
+            );
           }
           else {
             res.send({ error: 'Usuario No Existe' });
@@ -91,6 +99,38 @@ exports.signin = (req,res) => {
         })
       //res.json({data});
 }
+
+/*
+exports.protegido = (req,res) => {
+
+  ensureToken(req,res);
+
+  jwt.verify(req.token, 'my_secret_key', (err,data) =>{
+    if (err){
+      res.sendStatus(403);
+    }
+    else{
+      res.json({
+        text: "Ta protegido"
+      });
+    }
+  });
+}
+
+function ensureToken(req,res,next){
+  const bearerHeader = req.headers['authorization'];
+  console.log(bearerHeader);
+  if(typeof bearerHeader !== 'undefined'){
+    const bearer = bearerHeader.split(" ");
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  }
+  else{
+    res.sendStatus(403);
+  }
+}
+*/
 
 /*
 exports.signout = (req, res) => { 
