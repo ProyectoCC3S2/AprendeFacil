@@ -2,8 +2,14 @@ import { Form, Input, Button, Image, Empty } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Wrapper from "./Wrapper";
 
-const Profile = () => {
 
+const Profile = () => {
+    let usuariobj = localStorage.getItem("usuario")
+    let usuario = JSON.parse(usuariobj)
+    const getData = () =>{
+       console.log(usuariobj)
+    }
+    getData()
     return (     
         <Wrapper>
             
@@ -11,9 +17,8 @@ const Profile = () => {
                 {/* Se usa para ver la foto de perfil*/}
                 <div className="profile__avatar" >
                     <div>
-                        <Image width="80%" src="https://scontent-lim1-1.xx.fbcdn.net/v/t1.0-9/294585_158789240882503_1526909984_n.jpg?_nc_cat=102&ccb=2&_nc_sid=174925&_nc_eui2=AeHtowMxiPCtjqJHRXMTIuQnprmID2KUmVqmuYgPYpSZWnn0OCBCwVqW-oXrnj13j0nWJCRjilV95-l0x2XJ400a&_nc_ohc=3aCxculePlQAX9EXaSh&_nc_ht=scontent-lim1-1.xx&oh=8ad089b74842a01a0e2e6d62e012a4cf&oe=60201D5A"
-                            
-                            alt="foto-perfil">
+                        {/*La Imagen por defecto es sacada de internet*/}
+                        <Image width="80%" src={usuario.photo}>                        
                         </Image>
                     </div>
                     <div>
@@ -30,7 +35,7 @@ const Profile = () => {
                             Nickname:
                         </div>
                         <div className="profile__info--item--data">
-                            aprendef 
+                        {usuario.nickname}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -38,7 +43,7 @@ const Profile = () => {
                             Nombres:
                         </div>
                         <div className="profile__info--item--data">
-                            Cesar 
+                            {usuario.first_name}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -46,7 +51,7 @@ const Profile = () => {
                             Apellidos:
                         </div>
                         <div className="profile__info--item--data">
-                            Colorado 
+                        {usuario.last_name}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -54,7 +59,7 @@ const Profile = () => {
                             Telefono:
                         </div>
                         <div className="profile__info--item--data">
-                            988900190
+                        {usuario.phone}
                         </div>
                     </div>
                     <div className="profile__info--item">
@@ -62,9 +67,10 @@ const Profile = () => {
                             Correo:
                         </div>
                         <div className="profile__info--item--data">
-                            ccoloradoc@uni.pe
+                        {usuario.email}
                         </div>   
                     </div>
+                    {/*
                     <div className="profile__info--item">
                         <div className="profile__info--item--label">
                             Red Social:
@@ -73,6 +79,7 @@ const Profile = () => {
                             Facebook
                         </div>   
                     </div>
+                    */}
                     <div className="profile__info--button">
                         <Button type="secondary" style={{margin:"5px 0px 5px 0px"}} >
                             Cambiar de Contraseña

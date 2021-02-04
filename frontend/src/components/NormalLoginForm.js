@@ -5,7 +5,6 @@ import Wrapper2 from "./Wrapper2";
 
 const NormalLoginForm = () => {
   const onFinish = (values) => {
-    console.log(values)
    return fetch(
       `http://localhost:4000/api/auth/signin`,
       {
@@ -14,9 +13,11 @@ const NormalLoginForm = () => {
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify(values),
       })
-    .then(response => response.json())
-    .then(error => !error ? window.location.href = "/" : console.log("Hay error en el usuario o clave ",error) )
-    .catch(err => console.log(err));
+    .then(response => { 
+      response.json().then(data => localStorage.setItem("usuario",JSON.stringify(data)))
+      window.location.href = "/Inicio2"
+    })
+    .catch(error => console.log(error))
   };
   
 
