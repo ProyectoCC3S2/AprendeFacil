@@ -35,7 +35,7 @@ const CreatePost = () => {
       }).then(response => {
           console.log(response); 
       })
-      window.location.reload();
+      //window.location.reload();
       window.location.href="/PublicacionRealizada";
       return response.json()
   })
@@ -45,7 +45,7 @@ const CreatePost = () => {
 
   // Sección para los tags, que van hacer cursos que puede elegir el usuario
   const { Option } = Select;
-  const cursos = ['Lenguaje','Literatura','Historia','Geografía','Psicología','Filosofía','Aritmetica','Álgebra','Trigonometría','Geometría','Química','Física','Biología','Anatomía','Ingles'];
+  const cursos = ['Lenguaje','Literatura','Historia','Geografía','Psicología','Filosofía','Lógica','Aritmética','Álgebra','Trigonometría','Geometría','Química','Física','Biología','Anatomía','Ingles'];
   const tags =[]
   for (let i = 0; i < cursos.length; i++) {
     tags.push(<Option key={cursos[i]}>{cursos[i]}</Option>);
@@ -97,7 +97,7 @@ const CreatePost = () => {
         </Form.Item>
         {/* Sección para las monedas */}
         <div className="coins">
-        <p>Modenas:</p>
+        <p>Monedas:</p>
         <Form.Item 
           name="coins"
           rules={[
