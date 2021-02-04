@@ -35,8 +35,8 @@ const CreatePost = () => {
       }).then(response => {
           console.log(response); 
       })
-      window.location.reload();
-      window.location.href="/PublicacionRealizada";
+      //window.location.reload();
+      //window.location.href="/PublicacionRealizada";
       return response.json()
   })
   .catch(err => console.log(err));
@@ -97,7 +97,7 @@ const CreatePost = () => {
         </Form.Item>
         {/* Sección para las monedas */}
         <div className="coins">
-        <p>Modenas:</p>
+        <p>Monedas:</p>
         <Form.Item 
           name="coins"
           rules={[
