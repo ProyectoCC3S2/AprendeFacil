@@ -4,14 +4,13 @@ import TextArea from 'antd/lib/input/TextArea';
 import React, {useState} from 'react';
 import axios from 'axios';
 
-//let user = {object:any,id:number}
 const CreatePost = () => {
 
-  let usuariobj = localStorage.getItem("usuario");
-  let usuario = JSON.parse(usuariobj);
+  
 
   const [monedas, setCount] = useState(0);
-
+  let usuariobj = localStorage.getItem("usuario");
+  let usuario = JSON.parse(usuariobj);
   const onFinish = (values) => {
 
     const enviar = {
@@ -20,7 +19,6 @@ const CreatePost = () => {
         "userPhoto": usuario.photo
     }
     }
-    console.log(JSON.stringify(enviar));
 
     return fetch(
       `http://localhost:4000/api/publicacion/createpublicacion`,
@@ -31,7 +29,7 @@ const CreatePost = () => {
           body: JSON.stringify(enviar)
       })
     .then(response => {
-      let money = usuario.coins - monedas;
+      let money = usuario.coins - enviar.coins
       axios.put(`http://localhost:4000/api/Auth/${usuario._id}`, 
       {
         coins: money,

@@ -33,7 +33,7 @@ class CustomLayout extends React.Component {
       this.setState({post: respost});
       this.setState({tags: restags});
     })
-
+     
 
     axios.get(`http://localhost:4000/api/solucion/soluciones/${id}`)
     .then(res => {
@@ -83,6 +83,7 @@ class CustomLayout extends React.Component {
   }
 
   render(){
+    let variable = this.state.post.createdAt
   return (
     <Wrapper>
       <div className="main-question">
@@ -108,7 +109,7 @@ class CustomLayout extends React.Component {
                 </div>
               <div className="comment__user--data">
                 <span>{this.state.post.user}</span>
-                <span>{() => this.formatDate(this.state.post.createdAt)}</span>
+                <span>{(variable)}</span>
               </div>
             </div>
           </div>
