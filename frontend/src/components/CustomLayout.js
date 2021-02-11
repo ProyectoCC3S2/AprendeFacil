@@ -83,7 +83,10 @@ class CustomLayout extends React.Component {
   }
 
   render(){
-    let variable = this.state.post.createdAt
+    let variable ;
+    if(this.state.post.createdAt){
+      variable = this.formatDate(this.state.post.createdAt)
+    }
   return (
     <Wrapper>
       <div className="main-question">
@@ -109,7 +112,7 @@ class CustomLayout extends React.Component {
                 </div>
               <div className="comment__user--data">
                 <span>{this.state.post.user}</span>
-                <span>{(variable)}</span>
+                <span>{ variable }</span>
               </div>
             </div>
           </div>
