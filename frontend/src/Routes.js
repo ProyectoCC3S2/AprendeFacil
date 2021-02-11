@@ -17,6 +17,7 @@ import PostDone from './components/PostDone';
 import RecargarMonedas from './components/RecargarMonedas'
 import ConvertirMonedas from './components/ConvertirMonedas';
 import Home2 from './components/Home2';
+import NoIngreso from './components/Prohibido';
 
 
 export  const ProtectedComponent = () => {
@@ -86,6 +87,9 @@ const Routes = () => {
           </Route>
           <Route path="/Inicio2">
             <Prueba />
+          </Route>
+          <Route path="/Prohibido">
+            <NoIngreso />
           </Route>
           <Route path="/">
             <Home2 />

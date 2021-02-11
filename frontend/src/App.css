@@ -169,15 +169,29 @@
   justify-content: center;
   align-items: center;
   height: 10em;
-  font-size: 44px;
+  font-size: 48px;
   color: #61dafb;
+}
+
+.post__prohibe{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10em;  
+  font-size: 48px;
+  font-weight: bolder;
+  color: #900C3F;
 }
 
 .post__done--sentence{
   width: 50%;
-  height: 35%;
+  height: 50%;
   margin: 0px 0px 0px 0px;
 }
+
+
+
 
 .search_tittle{
   display: flex;
