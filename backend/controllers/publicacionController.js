@@ -60,7 +60,7 @@ exports.publicacionById = (req, res, next, id) => {
 
 //POR CORREGIR
 exports.updatePublicacion = (req, res = response) => {
-    const publicacionId = req.params.id;
+    const publicacionId = req.object.params.id;
     Publicacion.findById( publicacionId ).exec((err, publicacion)=>{
         if(err || !publicacion){
             return res.status(400).json({
