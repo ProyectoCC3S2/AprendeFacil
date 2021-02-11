@@ -17,7 +17,7 @@ const NormalLoginForm = () => {
       response.json().then(data => localStorage.setItem("usuario",JSON.stringify(data)))
       let usuariobj = localStorage.getItem("usuario")
       let user = JSON.parse(usuariobj)
-      if(user.nickname!=null){
+      if(user.nickname==null){
         alert('usuario no encontrado')
       }else{
         window.location.href = "/Inicio2"
