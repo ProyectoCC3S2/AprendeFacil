@@ -16,6 +16,13 @@ class CustomLayout extends React.Component {
       tags: []
   };
 
+  formatDate(date) {
+    date.toString();
+    const a = date.replace(/(\d+)-(\d+)-(\d+).+/g, '$3 / $2 / $1');
+    console.log(a);
+    return(a)  
+  }
+
   componentDidMount() {
     let id = this.props.match.params.id;
     axios.get(`http://localhost:4000/api/publicacion/${id}`)
@@ -80,19 +87,33 @@ class CustomLayout extends React.Component {
     <Wrapper>
       <div className="main-question">
         <HeaderQuestion title={this.state.post.tittle} />
-
         <div className="comment__main">
-        <div className="comment__data">
-          <p>
-            {this.state.post.comment}
-          </p>
+          <div className="comment__data">
+            <p>
+              {this.state.post.comment}
+            </p>
+          </div>
+
+          <div className="comment__tag">
+          {this.state.tags.map(tag => (
+                  <span>{tag}</span>
+                ))}
+          </div> 
+
+          <div className="data__container">
+            <span className="post__data">Publicado por:</span>
+            <div className="data__user">
+              <div className="comment__user--photo">
+                  <img src={this.state.post.userPhoto} alt="Usuario"/>
+                </div>
+              <div className="comment__user--data">
+                <span>{this.state.post.user}</span>
+                <span>{() => this.formatDate(this.state.post.createdAt)}</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div className="comment__tag">
-        {this.state.tags.map(tag => (
-                <span>{tag}</span>
-              ))}
-        </div> 
-      </div>
 
         <AnswerForm />
 
@@ -114,8 +135,20 @@ class CustomLayout extends React.Component {
               <div className="comment__main">
                 <div className="comment__data">
                   <span>{solution.solution}</span>
-                </div>                
+                </div>     
+                <div className="comment__response">
+                  <div className="comment__user">
+                  <div className="comment__user--photo">
+                    <img src={solution.userPhoto} alt="Usuario"/>
+                  </div>
+                    <div className="comment__user--data">
+                      <span>{solution.user}</span>
+                      <span>{this.formatDate(solution.createdAt)}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
+              
             </div>
                 ))}
           </div>
@@ -127,123 +160,3 @@ class CustomLayout extends React.Component {
 }
 
 export default withRouter(CustomLayout);
-/*
-        <div className="comment__main">
-        {this.state.solutions.map(solution => (
-                <span>{solution.solution}</span>
-              ))}
-        </div> */
-/*
-<div className="comment__main">
-        <div className="comment__data">
-          <p>
-            {props.comment}
-          </p>
-        </div>
-          <div className="comment__tag">
-            {
-              props.tags.map(tag => (
-                <span>{tag}</span>
-              ))}
-          </div>
-        </div>
-*/
-/*
-    axios.get(`http://localhost:4000/api/solucion/soluciones/${id}`)
-    .then(res => {
-      console.log(id);
-      const ressolution = res;
-      this.setState({solutions: ressolution});
-    })
-
- */
-/*
-
-  const getPost = (id) => {
-    return fetch(      
-      `http://localhost:4000/api/publicacion/${id}`,
-      {
-          //crossDomain:true,
-          method: 'GET',
-          //headers: {'Content-Type':'application/json'},
-      })
-      .then((res) => res.json())
-      .then((result) => {
-        //console.log(result);
-        //console.log(`http://localhost:4000/api/publicacion/${id}`);
-        setPost(res => res=result);
-        console.log(post); 
-      }
-      )
-      .catch((err) => console.log('error: No funciona el GET'))
-  };
-
-
-
-  const getSolutions = () => {
-    return fetch(      
-      `http://localhost:4000/api/solucion/soluciones/${id}`,
-      {
-          crossDomain:true,
-          method: 'GET',
-          headers: {'Content-Type':'application/json'},
-      })
-      .then((res) => res.json())
-      .then( result => {
-        console.log(result);
-        setSolutions(result);
-      })
-      .catch((err) => console.log('error'))
-  };
-*/
-/*
-function CustomLayout() {
-  const { id } = useParams();
-  console.log(id);
-
-  //const question = [];//questions.find(question => question.id === id);
-  const [question, setQuestion] = React.useState([]);
-  const [responses, setResponse] = React.useState([]);
-
-  const user = {
-    name: 'Rosa',
-    photo: 'https://i.pinimg.com/originals/7a/f6/0b/7af60b2b6fa202db54f0aa275fee6e17.png'
-  }
- 
-  useEffect(() => {
-    
-    return () => {
-      cleanup
-    }
-  }, [input])
-
-  const saveResponse = (text) => {
-    const miRespuesta = {
-      userData: {
-        ...user,
-        dateCreated: new Date()
-      },
-      comment: text,
-    };
-    const newResponses = [...responses, miRespuesta];
-    setResponse(newResponses)
-  }
-
-  console.log(responses)
-
-  return (
-    <Wrapper>
-      <div className="main-question">
-        <HeaderQuestion title={question.title} />
-        <Question question={question}/>
-        <AnswerForm saveResponse={saveResponse} />
-        <ResponseList responses={responses} />
-      </div>
-    </Wrapper>
-  )
-}
-
-export default CustomLayout;
-
-
-*/
