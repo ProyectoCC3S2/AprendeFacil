@@ -4,8 +4,10 @@ import Wrapper from "./Wrapper";
 import React from 'react';
 import Tarjeta from './Tarjeta'
 
+import axios from 'axios';
+
 const Monedas = function({retiroMonedas}){
-	const costoMoneda = 0.25
+	const costoMoneda = .8;
 	var costo = retiroMonedas * costoMoneda;
 	return(
 		<div style={{fontSize:'35px'}}>
@@ -17,21 +19,52 @@ const Monedas = function({retiroMonedas}){
 class ConvertirMonedas extends React.Component {
 	constructor(){
 		super()
+		
+		let usuariobj = localStorage.getItem("usuario");
+		this.usuario = JSON.parse(usuariobj);
+		
 		this.state = {
-			totalMonedas: 100,
+			totalMonedas: this.usuario.coins,
 			retiroMonedas: 0,
 			showTarjeta: false
 		};
 	}
     render(){
+    	let usuario = this.usuario;
     	const onFinish = (values) => {
     		this.setState({
     			retiroMonedas: values.monedas,
     			showTarjeta: true
     		});
+    		
+    		return fetch(
+			  `http://localhost:4000/api/publicacion/recargarmonedas`,
+			  {
+				  crossDomain:true,
+				  method: 'POST',
+				  headers: {'Content-Type':'application/json'},
+				  body: JSON.stringify(values),
+			  })
+			.then(response => {
+			  let money = usuario.coins - this.state.retiroMonedas;
+			  axios.put(`http://localhost:4000/api/Auth/${usuario._id}`, 
+			  {
+				coins: money,
+			  }).then(response => {
+				localStorage.clear()
+				localStorage.setItem("usuario",JSON.stringify(response.data.money))
+			  }
+			  )
+			  //window.location.reload();
+			  return response.json()
+		  })
+		  .catch(err => console.log(err));
     	}
     	const callbackFunction = () => {
-			  this.setState({totalMonedas:  this.state.totalMonedas - this.state.retiroMonedas});
+			  this.setState({
+			  		totalMonedas:  this.state.totalMonedas - this.state.retiroMonedas,
+			  		showTarjeta : false
+		  		});
 		};
 		return(
 			<Wrapper>
