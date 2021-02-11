@@ -56,7 +56,6 @@ class RecargarMonedas extends React.Component {
 			  }
 			  )
 			  //window.location.reload();
-			  return response.json()
 		  })
 		  .catch(err => console.log(err));
     		
