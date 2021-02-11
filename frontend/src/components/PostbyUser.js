@@ -9,6 +9,13 @@ class PostbyUser extends React.Component {
       posts: []
   };
 
+  formatDate(date) {
+    date.toString();
+    const a = date.replace(/(\d+)-(\d+)-(\d+).+/g, '$3 / $2 / $1');
+    console.log(a);
+    return(a)  
+  }
+
   componentDidMount() {
     let usuariobj = localStorage.getItem("usuario");
 	const usuario = JSON.parse(usuariobj);
@@ -30,8 +37,9 @@ class PostbyUser extends React.Component {
         misposts = this.state.posts.map( post => (
             <div className="comment answer-container">
                 <div className="main-question">
-                    <h3 className="post-tittle">{post.tittle}</h3> 
-                    <div className="comment__main">
+                    <h2 className="post-tittle">{post.tittle}</h2> 
+                    <div className="post__main">
+                        <p>Fecha de Publicación: {this.formatDate(post.createdAt)}</p>
                         <div className="comment__data">
                         <p>
                             { post.comment }
@@ -42,6 +50,7 @@ class PostbyUser extends React.Component {
                                 <span>{tag}</span>
                             ))}
                         </div> 
+                        
                     </div> 
                 </div> 
             </div>
