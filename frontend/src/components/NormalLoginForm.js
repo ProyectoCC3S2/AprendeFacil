@@ -2,7 +2,6 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Wrapper2 from "./Wrapper2";
 
-
 const NormalLoginForm = () => {
   const onFinish = (values) => {
    return fetch(
@@ -13,9 +12,12 @@ const NormalLoginForm = () => {
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify(values),
       })
-    .then(response => { 
-      response.json().then(data => localStorage.setItem("usuario",JSON.stringify(data)))
+    .then(response => response.json()).then(data=>{
+      console.log(data)
+      if(!data.error){
+         localStorage.setItem("usuario",JSON.stringify(data))
         window.location.href = "/Inicio2"
+      }
 
     })
     .catch(error => console.log(error))
