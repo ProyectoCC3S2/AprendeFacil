@@ -110,11 +110,14 @@ const CreatePost = () => {
             },
             () => ({
               validator(rule, value) {
-                if (value <= usuario.coins) {
-                  setCount(value)
-                  return Promise.resolve();
+                if (value > 0){
+                  if (value <= usuario.coins ) {
+                    setCount(value)
+                    return Promise.resolve();
+                  }
+                  return Promise.reject('No tiene esa cantidad de monedas disponibles ');
                 }
-                return Promise.reject('No tiene esa cantidad de monedas disponibles ');
+                return Promise.reject('Debes poner una cantidad positiva');
               },
             }),
           ]}>
