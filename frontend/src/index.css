@@ -108,7 +108,13 @@ code {
 .post-tittle{
   padding: 0.5rem;
 }
-
+.post__main{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+}
 .post__data {
   display: flex;
   padding: 0.2rem 0.5rem;
