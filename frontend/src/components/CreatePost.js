@@ -5,21 +5,25 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const CreatePost = () => {
-
   
-
+ 
   const [monedas, setCount] = useState(0);
   let usuariobj = localStorage.getItem("usuario");
+  if( !usuariobj){
+    window.location.href = "/IniciarSesion"
+  }
   let usuario = JSON.parse(usuariobj);
   const onFinish = (values) => {
 
-    const enviar = {
+    let enviar = {
       ...values,
       ...{"user": usuario.nickname,
         "userPhoto": usuario.photo
     }
     }
 
+   
+    
     return fetch(
       `http://localhost:4000/api/publicacion/createpublicacion`,
       {
@@ -29,17 +33,17 @@ const CreatePost = () => {
           body: JSON.stringify(enviar)
       })
     .then(response => {
-      let money = usuario.coins - enviar.coins
+      let money = usuario.coins - monedas
       axios.put(`http://localhost:4000/api/Auth/${usuario._id}`, 
       {
         coins: money,
       }).then(response => {
         localStorage.clear()
         localStorage.setItem("usuario",JSON.stringify(response.data.money))
-      }
+      }).then(
+        () => window.location.href="/PublicacionRealizada"
       )
       //window.location.reload();
-      window.location.href="/PublicacionRealizada";
       return response.json()
   })
   .catch(err => console.log(err));
@@ -52,7 +56,7 @@ const CreatePost = () => {
   for (let i = 0; i < cursos.length; i++) {
     tags.push(<Option key={cursos[i]}>{cursos[i]}</Option>);
   }
-
+  
   return (     
     
     <Wrapper>

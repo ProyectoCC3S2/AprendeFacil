@@ -59,6 +59,10 @@ class Prueba extends React.Component {
  }
 
   render(){
+    let usuariobj = localStorage.getItem("usuario")
+    if( !usuariobj){
+      window.location.href = "/IniciarSesion"
+    }
     return(
       <Wrapper>
         <h1>Lista de todas las preguntas en el Foro</h1>
