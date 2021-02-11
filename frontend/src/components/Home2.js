@@ -70,7 +70,7 @@ class Home2 extends React.Component {
               <div className = "container">
                 <div className = "row"> 
                 {this.state.publicaciones.map( publicacion => (
-                  <Link to={`/Pregunta/${publicacion._id}`}>
+                  <Link to={'/Prohibido'}>
                     <div className="question">
 
                       <div className="question__vote">
@@ -78,7 +78,7 @@ class Home2 extends React.Component {
                       </div>
                       <div className="question__info">
                         <div className="question__info--comment">
-                        <div className="question__info--title">{publicacion.title}</div>
+                        <div className="question__info--title">{publicacion.tittle}</div>
                           {publicacion.comment}
                         </div>
                         <div className="question__info--data">
