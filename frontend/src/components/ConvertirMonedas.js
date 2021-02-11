@@ -21,7 +21,7 @@ class ConvertirMonedas extends React.Component {
 		super()
 		
 		let usuariobj = localStorage.getItem("usuario");
-		this.usuario = JSON.parse(usuariobj);
+		this.usuario = usuariobj ? JSON.parse(usuariobj) : {coins:0};
 		
 		this.state = {
 			totalMonedas: this.usuario.coins,
@@ -30,6 +30,10 @@ class ConvertirMonedas extends React.Component {
 		};
 	}
     render(){
+		let usuariobj = localStorage.getItem("usuario");
+		if( !usuariobj){
+			  window.location.href = "/IniciarSesion"
+		}
     	let usuario = this.usuario;
     	const onFinish = (values) => {
     		this.setState({
