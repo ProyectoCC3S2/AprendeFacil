@@ -4,7 +4,6 @@ import TextArea from 'antd/lib/input/TextArea';
 import React, {useState} from 'react';
 import axios from 'axios';
 
-//let user = {object:any,id:number}
 const CreatePost = () => {
 
   let usuariobj = localStorage.getItem("usuario");
@@ -20,7 +19,6 @@ const CreatePost = () => {
         "userPhoto": usuario.photo
     }
     }
-    console.log(JSON.stringify(enviar));
 
     return fetch(
       `http://localhost:4000/api/publicacion/createpublicacion`,
