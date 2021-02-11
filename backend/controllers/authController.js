@@ -7,7 +7,7 @@ const { exception } = require('console');
 let salt = 'f844b09ff50c'
 
 
-
+ 
 exports.signup = (req, res) => { 
   const userData = {
     first_name: req.body.first_name,

@@ -105,6 +105,10 @@ code {
   width: 98%;
 }
 
+.post-tittle{
+  padding: 0.5rem;
+}
+
 .post__data {
   display: flex;
   padding: 0.2rem 0.5rem;

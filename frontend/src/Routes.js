@@ -18,44 +18,14 @@ import RecargarMonedas from './components/RecargarMonedas'
 import ConvertirMonedas from './components/ConvertirMonedas';
 import Home2 from './components/Home2';
 import NoIngreso from './components/Prohibido';
+import PostbyUser from './components/PostbyUser';
 
 
 export  const ProtectedComponent = () => {
     return <Redirect to='http://localhost:3000/'/>
 }
 
-/*
-const questions = [
-  {
-    id: '1',
-    votes: 30,
-    title: 'Cómo calcular el área de un triángulo?',
-    comment: 'Para este problema quisiera calcular el área de un triángulo rectángulo',
-    tags: ['5to Secundaria', 'Academia', '4to Secundaria', 'Matemáiica'],
-    userData: {
-      photo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Pok%C3%A9mon_Pikachu_art.png/220px-Pok%C3%A9mon_Pikachu_art.png',
-      name: 'Jorge',
-      dateCreated: new Date()
-    }
-  },
-  {
-    id: '2',
-    votes: -5,
-    title: 'Como calcular la aceleración de un objeto con fuerzas aplicadas sobre él?',
-    comment: 'Tengo las fuerzas aplicas, quisiera explicación de Leyes de Newton',
-    tags: ['Física', '5to Secundaria', 'Academia'],
-    userData: {
-      photo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Pok%C3%A9mon_Pikachu_art.png/220px-Pok%C3%A9mon_Pikachu_art.png',
-      name: 'Cesar',
-      dateCreated: new Date()
-    }
-  }
-]
-*/
-
 const Routes = () => {
-
-
 
   return (
     <div className="App">
@@ -63,6 +33,9 @@ const Routes = () => {
         <Switch>
           <Route path="/Pregunta/:id" component={CustomLayout}>
             <CustomLayout />
+          </Route>
+          <Route path="/PostbyUser">
+            <PostbyUser />
           </Route>
           <Route path="/IniciarSesion">
             <NormalLoginForm />

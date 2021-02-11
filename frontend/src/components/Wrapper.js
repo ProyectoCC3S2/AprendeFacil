@@ -41,6 +41,13 @@ function Wrapper(props) {
         Convertir Monedas
       </Link>
       </Menu.Item>
+      
+      <Menu.Item key="9">
+      <Link to={"/PostbyUser"}>
+        Mis publicaciones
+      </Link>
+      </Menu.Item>
+
       <SubMenu title={<span> Usuario</span>}>
         <Menu.Item key="5">
           <Link to={"/VerPerfil"}>

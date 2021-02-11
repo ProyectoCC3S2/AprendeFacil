@@ -58,6 +58,21 @@ exports.publicacionById = (req, res, next, id) => {
     })
 }
 
+exports.publicacionbyuser = (req,res) => {
+    let user = req.params.user;
+    console.log(user);
+    Publicacion.find({user: user}).exec((err,data)=>{
+        
+        if(err){
+            return res.status(400).json({
+                error: errorHandler(err)
+            })
+        }
+
+        res.json({data});
+    })
+}
+
 //POR CORREGIR
 exports.updatePublicacion = (req, res = response) => {
     const publicacionId = req.object.params.id;
