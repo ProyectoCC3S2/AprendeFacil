@@ -15,7 +15,14 @@ const NormalLoginForm = () => {
       })
     .then(response => { 
       response.json().then(data => localStorage.setItem("usuario",JSON.stringify(data)))
-      window.location.href = "/Inicio2"
+      let usuariobj = localStorage.getItem("usuario")
+      let user = JSON.parse(usuariobj)
+      if(user.nickname!=null){
+        alert('usuario no encontrado')
+      }else{
+        window.location.href = "/Inicio2"
+      }
+
     })
     .catch(error => console.log(error))
   };
