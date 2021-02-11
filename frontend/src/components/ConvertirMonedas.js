@@ -85,6 +85,7 @@ class ConvertirMonedas extends React.Component {
 						<Input
 						type="number"
 						min="0"
+						max={this.state.totalMonedas}
 						step="1"
 					  />
 					</Form.Item>
