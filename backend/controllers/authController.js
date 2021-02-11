@@ -7,7 +7,7 @@ const { exception } = require('console');
 let salt = 'f844b09ff50c'
 
 
- 
+
 exports.signup = (req, res) => { 
   const userData = {
     first_name: req.body.first_name,
@@ -93,7 +93,7 @@ exports.signin = (req,res) => {
             );
           }
           else {
-            res.send({ error: 'Usuario No Existe' });
+            res.send(res.json({error: 'Usuario No Existe'}));
           }
           
         })
