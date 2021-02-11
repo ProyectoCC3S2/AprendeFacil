@@ -120,7 +120,7 @@ code {
   padding: 0.5rem;
   display: flex;
   border-radius: 4px;
-  width: 100px;
+  width: auto;
 }
 
 .comment__user--photo img {
