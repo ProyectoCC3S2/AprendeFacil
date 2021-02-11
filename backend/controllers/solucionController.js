@@ -35,11 +35,7 @@ exports.solucionbypost = (req,res) => {
                 error: errorHandler(err)
             })
         }
-        /*
-        res.json({
-            message: pub,
-            ok : true,
-        });*/
+
         res.json({data});
     })
 }

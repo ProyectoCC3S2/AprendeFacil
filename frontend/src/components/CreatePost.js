@@ -2,31 +2,33 @@ import { Form, Input, Button, Checkbox, Select, Alert } from 'antd';
 import Wrapper from "./Wrapper";
 import TextArea from 'antd/lib/input/TextArea';
 import React, {useState} from 'react';
-
 import axios from 'axios';
-import {Link} from "react-router-dom";
-import apiCore from './apiCore';
-import postPublicacion from './apiCore';
 
 //let user = {object:any,id:number}
 const CreatePost = () => {
 
-  let usuariobj = localStorage.getItem("usuario")
-  let usuario = JSON.parse(usuariobj)
+  let usuariobj = localStorage.getItem("usuario");
+  let usuario = JSON.parse(usuariobj);
 
   const [monedas, setCount] = useState(0);
 
   const onFinish = (values) => {
 
+    const enviar = {
+      ...values,
+      ...{"user": usuario.nickname,
+        "userPhoto": usuario.photo
+    }
+    }
+    console.log(JSON.stringify(enviar));
+
     return fetch(
-     // user.object = values,
-      //user.id = usuario._id
       `http://localhost:4000/api/publicacion/createpublicacion`,
       {
-          crossDomain:true,
+          crossDomain: true,
           method: 'POST',
           headers: {'Content-Type':'application/json'},
-          body: JSON.stringify(values),
+          body: JSON.stringify(enviar)
       })
     .then(response => {
       let money = usuario.coins - monedas;
@@ -44,7 +46,6 @@ const CreatePost = () => {
   })
   .catch(err => console.log(err));
   };
-  
 
   // Sección para los tags, que van hacer cursos que puede elegir el usuario
   const { Option } = Select;
