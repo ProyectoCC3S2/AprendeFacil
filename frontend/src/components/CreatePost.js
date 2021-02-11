@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import apiCore from './apiCore';
 import postPublicacion from './apiCore';
 
+//let user = {object:any,id:number}
 const CreatePost = () => {
 
   let usuariobj = localStorage.getItem("usuario")
@@ -16,8 +17,10 @@ const CreatePost = () => {
   const [monedas, setCount] = useState(0);
 
   const onFinish = (values) => {
+
     return fetch(
-      
+     // user.object = values,
+      //user.id = usuario._id
       `http://localhost:4000/api/publicacion/createpublicacion`,
       {
           crossDomain:true,
@@ -26,15 +29,15 @@ const CreatePost = () => {
           body: JSON.stringify(values),
       })
     .then(response => {
-      console.log(response)
-      const money = usuario.coins - monedas;
-      console.log(monedas)
+      let money = usuario.coins - monedas;
       axios.put(`http://localhost:4000/api/Auth/${usuario._id}`, 
       {
         coins: money,
       }).then(response => {
-          console.log(response); 
-      })
+        localStorage.clear()
+        localStorage.setItem("usuario",JSON.stringify(response.data.money))
+      }
+      )
       //window.location.reload();
       window.location.href="/PublicacionRealizada";
       return response.json()
