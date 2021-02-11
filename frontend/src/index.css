@@ -37,8 +37,6 @@ code {
   color: white;
 }
 
-.main-question {
-}
 
 .header__title {
   text-align: left;
@@ -175,6 +173,11 @@ code {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
+}
+
+.question__info--title {
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .question__info--tag span {
